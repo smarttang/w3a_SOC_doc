@@ -1,236 +1,128 @@
 {"0": {
-    "doc": "背景描述&功能演进",
-    "title": "背景描述",
-    "content": "W3A SOC早期的日志审计是基于Perl写的脚本实现tail -f 类似的功能来实现日志的采集和上报，完整的依赖perl脚本的能力，这个得感谢@McShell当时跟他一起合作协同做的一个版本，后来我们奔现了，他成了我的同事（在三七互娱时）也是我一直以来特别要好的兄弟，后来现在去了腾讯。 . 早期的版本相对来讲更多偏DEMO，不具备生产价值，但是却好多人用，普遍的场景是： . | 大学生毕业，需要毕业设计，这个时候日志审计就是最热的毕设选科，所以用的人特别多。 | 有些小公司的业务，需要有日志审计的能力，毕竟要过等保，然后想不花钱能解决问题，这个时候用它正合适。 | 长期有日志审计需要，ELK只能记录日志展示，做些正向分析、承载，而攻击行为，识别有困难，所以就用这个识别攻击行为，好知道哪被攻击。 | 早期有些定制化的客户，如机顶盒、广场小型机、广告公司，这些小型客户，他们量不大，都是开源的官网如DeDeCMS、WP类的应用做二开，怕被人攻击不知道，用来发现和审计攻击行为，好做些升级和优化。 | . ",
-    "url": "http://localhost:4000/W3A#%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BF%B0",
-    "relUrl": "/W3A#背景描述"
-  },"1": {
-    "doc": "背景描述&功能演进",
+    "doc": "功能地图",
     "title": "安全功能地图（未来适配的能力家谱）",
-    "content": "| 服务 | 云上 | 云下 | 容器化 | 版本 | 时间 | . | 日志审计 | √ | √ | √ | v1.0.6 | 2022.5.13 | . | 漏洞风险管理 | √ | √ | √ | v1.0.7 | 2022.5.18 | . | WAF防护 | - | - | - | - | - | . | 资产发现 | - | - | - | - | - | . | Web漏洞扫描 | - | - | - | - | - | . | 弱口令扫描 | - | - | - | - | - | . | 系统漏洞扫描 | - | - | - | - | - | . | 主机防护 | - | - | - | - | - | . | 基线检测 | - | - | - | - | - | . | 流量分析 | - | - | - | - | - | . | 工程分析(SCA/合规) | - | - | - | - | - | . | 系统漏洞扫描 | - | - | - | - | - | . | 蜜罐服务 | - | - | - | - | - | . | HIDS主机防护 | - | - | - | - | - | . | 合规服务 | - | - | - | - | - | . | 服务广场 | - | - | - | - | - | . ",
+    "content": "| 服务 | 云上 | 云下 | 容器化 | 版本 | 时间 | . | 日志审计 | √ | √ | √ | v1.0.6 | 2022.5.13 | . | 告警管理 | √ | √ | √ | v1.0.6 | 2022.5.13 | . | 漏洞风险管理 | √ | √ | √ | v1.0.7 | 2022.5.18 | . | WAF防护 | - | - | - | - | - | . | 资产发现 | - | - | - | - | - | . | Web漏洞扫描 | - | - | - | - | - | . | 弱口令扫描 | - | - | - | - | - | . | 系统漏洞扫描 | - | - | - | - | - | . | 主机防护 | - | - | - | - | - | . | 基线检测 | - | - | - | - | - | . | 流量分析 | - | - | - | - | - | . | 工程分析(SCA/合规) | - | - | - | - | - | . | 系统漏洞扫描 | - | - | - | - | - | . | 蜜罐服务 | - | - | - | - | - | . | HIDS主机防护 | - | - | - | - | - | . | 合规服务 | - | - | - | - | - | . | 服务广场 | - | - | - | - | - | . ",
     "url": "http://localhost:4000/W3A#%E5%AE%89%E5%85%A8%E5%8A%9F%E8%83%BD%E5%9C%B0%E5%9B%BE%E6%9C%AA%E6%9D%A5%E9%80%82%E9%85%8D%E7%9A%84%E8%83%BD%E5%8A%9B%E5%AE%B6%E8%B0%B1",
     "relUrl": "/W3A#安全功能地图未来适配的能力家谱"
-  },"2": {
-    "doc": "背景描述&功能演进",
-    "title": "背景描述&功能演进",
+  },"1": {
+    "doc": "功能地图",
+    "title": "功能地图",
     "content": " ",
     "url": "http://localhost:4000/W3A",
     "relUrl": "/W3A"
+  },"2": {
+    "doc": "日志审计",
+    "title": "背景描述",
+    "content": "W3A SOC早期的日志审计是基于Perl写的脚本实现tail -f 类似的功能来实现日志的采集和上报，完整的依赖perl脚本的能力，这个得感谢@McShell当时跟他一起合作协同做的一个版本，后来我们奔现了，他成了我的同事（在三七互娱时）也是我一直以来特别要好的兄弟，后来现在去了腾讯。 . 早期的版本相对来讲更多偏DEMO，不具备生产价值，但是却好多人用，普遍的场景是： . | 大学生毕业，需要毕业设计，这个时候日志审计就是最热的毕设选科，所以用的人特别多。 | 有些小公司的业务，需要有日志审计的能力，毕竟要过等保，然后想不花钱能解决问题，这个时候用它正合适。 | 长期有日志审计需要，ELK只能记录日志展示，做些正向分析、承载，而攻击行为，识别有困难，所以就用这个识别攻击行为，好知道哪被攻击。 | 早期有些定制化的客户，如机顶盒、广场小型机、广告公司，这些小型客户，他们量不大，都是开源的官网如DeDeCMS、WP类的应用做二开，怕被人攻击不知道，用来发现和审计攻击行为，好做些升级和优化。 | . ",
+    "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1#%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BF%B0",
+    "relUrl": "/日志审计#背景描述"
   },"3": {
-    "doc": "FAQ答疑",
-    "title": "JVM",
-    "content": " ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#jvm",
-    "relUrl": "/FAQ答疑#jvm"
+    "doc": "日志审计",
+    "title": "规则管理",
+    "content": "进来之后，点击「左侧」日志监控 =&gt; 规则管理，即可看到默认的规则，默认的规则一共写了11条，能够具备初步的能力： . | 弱口令登录登录的检测识别。 | SQL注入 | XSS跨站脚本攻击 | LFI/RFI文件包含 | 命令执行 | 后门webshell | 部分扫描特征 | . ",
+    "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1#%E8%A7%84%E5%88%99%E7%AE%A1%E7%90%86",
+    "relUrl": "/日志审计#规则管理"
   },"4": {
-    "doc": "FAQ答疑",
-    "title": "Fail to identify build tool for compile",
-    "content": "选择 JVM，但是未能识别到构建工具， . 建议使用 Java、Kotlin 进行扫描。 . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#fail-to-identify-build-tool-for-compile",
-    "relUrl": "/FAQ答疑#fail-to-identify-build-tool-for-compile"
+    "doc": "日志审计",
+    "title": "DEMO",
+    "content": "写的规则都是泛匹配规则，如需深入，请自行编写合适的规则策略（基于Golang的regexp进行开发），元豚科技也可以辅助定制化开发规则，也可以购买商业的规则库，按需使用即可。 . ",
+    "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1#demo",
+    "relUrl": "/日志审计#demo"
   },"5": {
-    "doc": "FAQ答疑",
-    "title": "Scanner",
-    "content": "下载最新的 Scanner . java \"-Ddburl=jdbc:mysql://localhost:3306/archguard?user=root&amp;password=&amp;useSSL=false\" -jar scan_sourcecode.jar --system-id=6 --language=java --path=. | 运行目录 scanner 中的 .jar 是否完整。如果出错了，需要从 GitHub 重新下载。 | 查看是否生成对应的 sql 文件。如果没有的话，建议可以提交 issue，包含错误日志。 | . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#scanner",
-    "relUrl": "/FAQ答疑#scanner"
-  },"6": {
-    "doc": "FAQ答疑",
-    "title": "Error: Unable to access jarfile scan_sourcecode.jar",
-    "content": "出错：Error: Unable to access jarfile scan_sourcecode.jar . 原因：连接不了 Github 下载对应的 jar . 建议： . | 选择合适的 VPN 工具，连接下载。 | 将 jar 包打包到进窗口中 | . 未来将提供一个 all in one 的大版本包。 . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#error-unable-to-access-jarfile-scan_sourcecodejar",
-    "relUrl": "/FAQ答疑#error-unable-to-access-jarfile-scan_sourcecodejar"
-  },"7": {
-    "doc": "FAQ答疑",
-    "title": "Git",
-    "content": " ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#git",
-    "relUrl": "/FAQ答疑#git"
-  },"8": {
-    "doc": "FAQ答疑",
-    "title": "Fail to clone source with exitCode 128",
-    "content": "无法 CLONE 代码，需要检查一下用户名和密码，或者网络权限。 . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#fail-to-clone-source-with-exitcode-128",
-    "relUrl": "/FAQ答疑#fail-to-clone-source-with-exitcode-128"
-  },"9": {
-    "doc": "FAQ答疑",
-    "title": "Git 源码配置",
-    "content": "error: cannot run ssh: No such file or directory fatal: unable to fork . ArchGuard 直接调用 git clone 去 clone 源码 . 如果配置了用户名和秘密，则会执行 repo.replace(\"//\", \"//${urlEncode(systemInfo.username)}:${urlEncode(systemInfo.getDeCryptPassword())}@\")，以生成一个带用户名和密码的 URL。 . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#git-%E6%BA%90%E7%A0%81%E9%85%8D%E7%BD%AE",
-    "relUrl": "/FAQ答疑#git-源码配置"
-  },"10": {
-    "doc": "FAQ答疑",
-    "title": "SSL certificate problem: unable to get local issuer certificate",
-    "content": "原因：内部 Git 服务器的 SSL 证书有问题 . 建议：尝试到 Docker 窗口中配置一下不验证 SSL . git config --global http.sslVerify false . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#ssl-certificate-problem-unable-to-get-local-issuer-certificate",
-    "relUrl": "/FAQ答疑#ssl-certificate-problem-unable-to-get-local-issuer-certificate"
-  },"11": {
-    "doc": "FAQ答疑",
-    "title": "Windows",
-    "content": "java.io.IOException: Cannot run program “git” (in directory “d:/xxx”): d:/xxx/scm_git_hot_file.txt (No such file or directory) . Docker Compose 下访问不了 Local 类型的项目，建议下载。 . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#windows",
-    "relUrl": "/FAQ答疑#windows"
-  },"12": {
-    "doc": "FAQ答疑",
-    "title": "Docker",
-    "content": " ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#docker",
-    "relUrl": "/FAQ答疑#docker"
-  },"13": {
-    "doc": "FAQ答疑",
-    "title": "docker mysql exited 137 memory",
-    "content": "需要增大 Docker 虚拟机内存。 . The default VM created by Coloma has 2 CPUs, 2GiB memory and 60GiB storage. When run scanner in large projects, the default config will make MySQL exited, can to set more memory for ArchGuard: . colima start --cpu 4 --memory 8 . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#docker-mysql-exited-137-memory",
-    "relUrl": "/FAQ答疑#docker-mysql-exited-137-memory"
-  },"14": {
-    "doc": "FAQ答疑",
-    "title": "specify container image platform requires api version 1.41",
-    "content": "需要更新一下 Docker Compose 的版本到 1.41 . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#specify-container-image-platform-requires-api-version-141",
-    "relUrl": "/FAQ答疑#specify-container-image-platform-requires-api-version-141"
-  },"15": {
-    "doc": "FAQ答疑",
-    "title": "Alpine ERROR: unable to select packages:",
-    "content": "尝试： . RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#alpine-error-unable-to-select-packages",
-    "relUrl": "/FAQ答疑#alpine-error-unable-to-select-packages"
-  },"16": {
-    "doc": "FAQ答疑",
-    "title": "SSL certificate problem: unable to get local issuer certificate",
-    "content": ". | git clone https://github.com/archguard/archguard | docker-compose -p ArchGuard -f ./docker-compose.yml up -d 所有组件启动OK | 参考 https://archguard.org/ ，访问 http://localhost:11080/， 创建系统 | ./docker-compose logs -f 查看日志打印，出现SSL certificate problem: unable to get local issuer certificate错误 查看日志，该日志在archguard-backend容器中的错误，最开始本人误认为是宿主机上的错误，解决方法如下： | . # 进入后端容器 docker exec -it archguard-backend /bin/sh git config --global http.sslVerify false # 验证以下 git clone xxxxxx . 注：有些童鞋可能会遇到无法访问外网的问题，根据自己公司设置外网代理即可（docker宿主机器和archguard-backend容器都需要配置） . 详细操作步骤，可参考： . | Look me：ArchGuard 部署搭建 —— help ！！！ | SSL certificate problem: unable to get local issuer certificate | . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#ssl-certificate-problem-unable-to-get-local-issuer-certificate-1",
-    "relUrl": "/FAQ答疑#ssl-certificate-problem-unable-to-get-local-issuer-certificate-1"
-  },"17": {
-    "doc": "FAQ答疑",
-    "title": "failed to scan GitSourceScanner",
-    "content": "详细日志如下： . archguard-backend | 2022-04-12 14:34:56.506 ERROR 1 --- [pool-3-thread-3] c.t.a.s.d.hubexecutor.ScannerManager : failed to scan GitSourceScanner archguard-backend | archguard-backend | java.net.ConnectException: Operation timed out (Connection timed out) archguard-backend | at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na] archguard-backend | at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na] archguard-backend | at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na] archguard-backend | at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na] archguard-backend | at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na] archguard-backend | at java.base/java.net.Socket.connect(Socket.java:591) ~[na:na] archguard-backend | at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:285) ~[na:na] archguard-backend | at java.base/sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:173) ~[na:na] archguard-backend | at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:182) ~[na:na] archguard-backend | at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:474) ~[na:na] archguard-backend | at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:569) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.HttpsClient.&lt;init&gt;(HttpsClient.java:265) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:372) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1181) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1075) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1581) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1509) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:246) ~[na:na] archguard-backend | at java.base/java.net.URL.openStream(URL.java:1140) ~[na:na] archguard-backend | at com.thoughtworks.archguard.scanner.infrastructure.FileOperator.download(FileOperator.kt:14) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.scanner.git.GitScannerTool.download(GitScannerTool.kt:78) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.scanner.git.GitScannerTool.prepareTool(GitScannerTool.kt:55) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.scanner.git.GitScannerTool.getGitReport(GitScannerTool.kt:25) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.scanner.git.GitSourceScanner.scan(GitSourceScanner.kt:25) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.hubexecutor.ScannerManager.execute$lambda-1$lambda-0(ScannerManager.kt:27) ~[classes!/:na] archguard-backend | at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na] archguard-backend | at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na] archguard-backend | at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na] archguard-backend | at java.base/java.lang.Thread.run(Thread.java:835) ~[na:na] archguard-backend | archguard-backend | 2022-04-12 14:34:56.506 ERROR 1 --- [pool-3-thread-1] c.t.a.s.d.hubexecutor.ScannerManager : failed to scan SourceCodeScanner archguard-backend | archguard-backend | java.net.ConnectException: Operation timed out (Connection timed out) archguard-backend | at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na] archguard-backend | at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na] archguard-backend | at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na] archguard-backend | at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na] archguard-backend | at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na] archguard-backend | at java.base/java.net.Socket.connect(Socket.java:591) ~[na:na] archguard-backend | at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:285) ~[na:na] archguard-backend | at java.base/sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:173) ~[na:na] archguard-backend | at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:182) ~[na:na] archguard-backend | at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:474) ~[na:na] archguard-backend | at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:569) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.HttpsClient.&lt;init&gt;(HttpsClient.java:265) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:372) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1181) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1075) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1581) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1509) ~[na:na] archguard-backend | at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:246) ~[na:na] archguard-backend | at java.base/java.net.URL.openStream(URL.java:1140) ~[na:na] archguard-backend | at com.thoughtworks.archguard.scanner.infrastructure.FileOperator.download(FileOperator.kt:14) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.scanner.codescan.sourcecode.SourceCodeTool.download(SourceCodeTool.kt:61) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.scanner.codescan.sourcecode.SourceCodeTool.prepareTool(SourceCodeTool.kt:38) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.scanner.codescan.sourcecode.SourceCodeTool.analyse(SourceCodeTool.kt:24) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.scanner.codescan.sourcecode.SourceCodeScanner.scan(SourceCodeScanner.kt:26) ~[classes!/:na] archguard-backend | at com.thoughtworks.archguard.scanner.domain.hubexecutor.ScannerManager.execute$lambda-1$lambda-0(ScannerManager.kt:27) ~[classes!/:na] archguard-backend | at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na] archguard-backend | at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na] archguard-backend | at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na] archguard-backend | at java.base/java.lang.Thread.run(Thread.java:835) ~[na:na] archguard-backend | archguard-backend | 2022-04-12 14:34:56.506 INFO 1 --- [pool-1-thread-3] t.a.s.d.a.ArchitectureDependencyAnalysis : ************************************ archguard-backend | 2022-04-12 14:34:56.506 INFO 1 --- [pool-1-thread-3] t.a.s.d.a.ArchitectureDependencyAnalysis : Finished level 1 scanners archguard-backend | 2022-04-12 14:34:56.506 INFO 1 --- [pool-1-thread-3] t.a.s.d.a.ArchitectureDependencyAnalysis : ************************************ . 该问题是由于archguard-backend容器访问github下载Scanner超时，解决方法： . | 手动下载Scannerjar包，下载所需版本请参见版本映射表 | 上传到docker宿主机，并且拷贝到archguard-backend容器的/home/spring目录 | . # 登录容器 docker exec -it archguard-backend /bin/sh ~ $ pwd /home/spring ~ $ ls app.jar scan_git-1.4.3-all.jar scan_test_badsmell-1.4.3-all.jar archguard scan_jacoco-1.4.3-all.jar diff_changes-1.4.3-all.jar scan_sourcecode-1.4.3-all.jar . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#failed-to-scan-gitsourcescanner",
-    "relUrl": "/FAQ答疑#failed-to-scan-gitsourcescanner"
-  },"18": {
-    "doc": "FAQ答疑",
-    "title": "日志",
-    "content": "查看： . docker-compose logs -f . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#%E6%97%A5%E5%BF%97",
-    "relUrl": "/FAQ答疑#日志"
-  },"19": {
-    "doc": "FAQ答疑",
-    "title": "通过docker部署：进入系统后提示错误：『Request failed with status code 502』",
-    "content": "原因：目前 dockerhub 供下载的镜像只支持amd64的CPU，而您宿主机可能为arm的CPU。 . 方案：可换机器尝试，或在宿主机build镜像部署。 . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#%E9%80%9A%E8%BF%87docker%E9%83%A8%E7%BD%B2%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E5%90%8E%E6%8F%90%E7%A4%BA%E9%94%99%E8%AF%AFrequest-failed-with-status-code-502",
-    "relUrl": "/FAQ答疑#通过docker部署进入系统后提示错误request-failed-with-status-code-502"
-  },"20": {
-    "doc": "FAQ答疑",
-    "title": "通过docker部署：添加系统并点击扫描完成后，发现没有分析结果数据",
-    "content": "原因：docker容器中下载的jar包权限不足。 . 方案：以root身份进入容器，修改/home/spring目录下的jar包权限。 . ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91#%E9%80%9A%E8%BF%87docker%E9%83%A8%E7%BD%B2%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%B9%B6%E7%82%B9%E5%87%BB%E6%89%AB%E6%8F%8F%E5%AE%8C%E6%88%90%E5%90%8E%E5%8F%91%E7%8E%B0%E6%B2%A1%E6%9C%89%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C%E6%95%B0%E6%8D%AE",
-    "relUrl": "/FAQ答疑#通过docker部署添加系统并点击扫描完成后发现没有分析结果数据"
-  },"21": {
-    "doc": "FAQ答疑",
-    "title": "FAQ答疑",
-    "content": " ",
-    "url": "http://localhost:4000/FAQ%E7%AD%94%E7%96%91",
-    "relUrl": "/FAQ答疑"
-  },"22": {
     "doc": "日志审计",
     "title": "日志审计",
-    "content": "漏洞风险的管理基本上每个公司都会涉及到，过去一直都是每个公司开发自己的独立的功能，但是殊俗同归，基本都是漏洞的整个生命周期管理。站在工作台的角度，我们面对的画像是安全、运维侧的同学，所以我们更多面对这类人群去做深入，让他们用的更加舒服为主，而实际推进落地修复，更多依赖第三方集成来实现，这里有些洞察： . | 业务侧本身就有很多平台，如worktle、Jira、禅道、Wiki等，实际上大家都在做减法，我们再做个加法就有点难受了。 | 整个闭环周期其实在第三方平台已经能够快速满足提醒、跟进的能力，无需太多的操作即可实现，但第三方的集成要做更多的事，从评估、对接、再到研究、开发，就是时间周期，折腾下来还不一定能够通用，因为每个公司内部都不一样，涉及到如权限、身份、角色等，就更加麻烦了，所以一般都特别不好整。 | 涉及到多样的性的漏洞特征、多样性的数据源，内部系统直接对外拉通也很不安全，对内部会带来困扰，最常见就是漏洞直接第三方托管之后，被弱口令暴露出来。 | . 元豚科技在漏洞管理这块有几个特点： . | 针对第三方数据源，我们开放OpenAPI，客户可以托管到云上，独立分离部署，第三方可以根据OpenAPI标签化的录入漏洞风险，直达W3A SOC的工作台里，再由安全人员进行管理处置。 | 内部拉通的动作，OpenAPI可以直接输出，可以找元豚科技帮您对接内部的服务，如Jira、禅道等第三方，也可以自己集成，数据源统一之后，自己就能玩，定制完一次之后，后续没有任何成本，直接就能同步到内部环境和平台，简单直接。 | 针对扫描器，或者定制的扫描服务，只要发现的问题，根据需要直接通过OpenAPI录入，可以自行完善闭环，快速方便，如已经打通了上游，这个就更加简单了。 | . 而在最后的实现形式上，它们是以代码库和文档的形式存在的。ArchGuard 是基于代码的静态分析工具，未来也将基于设计提供这方面的功能。 . ",
+    "content": " ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1",
     "relUrl": "/日志审计"
-  },"23": {
+  },"6": {
     "doc": "W3A SOC",
     "title": "关键能力细节",
     "content": "Web日志分析 . | 通过Logstash/filebeat采集日志到ES上。 | Golang通过开放平台，获取规则信息针对Kafka的日志进行实时分析。 | 将存在问题的部分直接存到平台里，平台只存落地的攻击日志、记录分析日志数。 | 攻击源IP地址分析，结合IP来源进行分析。 | 输出可以用于封禁的API接口，查可封禁的IP。 | . 存活监控/篡改监控告警 . | 针对提交的IP进行检测，看是否存活，可以分布式，持续的监测。 | 针对目标进行篡改监控。 | . 问题告警 . | 针对出现的问题，统一告警输出。 | 支持钉钉、企业微信。 | . ",
     "url": "http://localhost:4000/#%E5%85%B3%E9%94%AE%E8%83%BD%E5%8A%9B%E7%BB%86%E8%8A%82",
     "relUrl": "/#关键能力细节"
-  },"24": {
+  },"7": {
     "doc": "W3A SOC",
     "title": "Docker Compose（快速体验）",
     "content": "git clone https://github.com/smarttang/w3a_SOC cd w3a_SOC/deploy/docker-compose/test-environment/ docker-compose up -d . ",
     "url": "http://localhost:4000/#docker-compose%E5%BF%AB%E9%80%9F%E4%BD%93%E9%AA%8C",
     "relUrl": "/#docker-compose快速体验"
-  },"25": {
+  },"8": {
     "doc": "W3A SOC",
     "title": "服务启动后的效果",
     "content": "➜ test-environment git:(master) ✗ docker-compose ps -a Name Command State Ports -------------------------------------------------------------------------------------------------------------------------------- test-environment_elasticsearch_1 /bin/tini -- /usr/local/bi ... Up 0.0.0.0:9200-&gt;9200/tcp, 0.0.0.0:9300-&gt;9300/tcp test-environment_filebeat1_1 filebeat -e -strict.perms= ... Up test-environment_filebeat2_1 filebeat -e -strict.perms= ... Up test-environment_kafka_1 /opt/bitnami/scripts/kafka ... Up 0.0.0.0:29092-&gt;29092/tcp, 0.0.0.0:9092-&gt;9092/tcp test-environment_kibana_1 /bin/tini -- /usr/local/bi ... Up 0.0.0.0:5601-&gt;5601/tcp test-environment_nginx_1 /usr/local/openresty/bin/o ... Up 0.0.0.0:80-&gt;8080/tcp test-environment_w3aAgent_1 /usr/local/sbin/dolphins Up test-environment_w3aAlterAgent_1 /usr/local/sbin/dolphins Up test-environment_w3aDashboard_1 sh -c java $JAVA_OPTS -Dja ... Up 0.0.0.0:8081-&gt;8080/tcp test-environment_w3aFrotend_1 /docker-entrypoint.sh ngin ... Up 0.0.0.0:81-&gt;80/tcp test-environment_w3aMysql_1 docker-entrypoint.sh mysqld Up 0.0.0.0:3306-&gt;3306/tcp, 33060/tcp test-environment_w3aRedis_1 docker-entrypoint.sh redis ... Up 0.0.0.0:6379-&gt;6379/tcp test-environment_w3aopenapi_1 sh -c java $JAVA_OPTS -Dja ... Up 0.0.0.0:8082-&gt;8080/tcp test-environment_zookeeper_1 /opt/bitnami/scripts/zooke ... Up 0.0.0.0:2181-&gt;2181/tcp, 2888/tcp, 3888/tcp, 8080/tcp . ",
     "url": "http://localhost:4000/#%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E5%90%8E%E7%9A%84%E6%95%88%E6%9E%9C",
     "relUrl": "/#服务启动后的效果"
-  },"26": {
+  },"9": {
     "doc": "W3A SOC",
     "title": "访问Web部分",
     "content": "Docker Compose 启动后，访问：http://localhost:81/，就可以看到W3A SOC平台的服务了。 . | 攻击测试针对本地80进行攻击就行，那个就是靶场，扫描的时候自动激活分析。 | 所有的上报会在W3A SOC平台直观展现。 | 默认自带了少量规则，可以激活攻击用。 | . 攻击后就能看到如下图： . ",
     "url": "http://localhost:4000/#%E8%AE%BF%E9%97%AEweb%E9%83%A8%E5%88%86",
     "relUrl": "/#访问web部分"
-  },"27": {
+  },"10": {
     "doc": "W3A SOC",
     "title": "W3A SOC",
     "content": ". 基于日志安全分析做切入，做最好用的安全运维工作台。 . 主要特性 . | 日志分析: 基于kafka+GoLang的方式，对采集的Web和系统应用日志进行攻击行为的分析。 | 篡改监控: 基于Golang开发的页面篡改监控。 | 业务连续性监控: 基于网络的业务连续性监控服务，确定业务是否有中断。 | 告警整合: 实现钉钉、企业微信的联动告警机制。 | 部署支持：docker-compose、Kubernetes。 | 整体架构：基于 Filebeat(采集/清洗) + Kafka(汇聚) + ElasticSearch(检索) | 技术实现：后端基于Java，前端基于Vue，数据库基于MYSQL。 | . 目标 . | 满足等保二级、三级的需求，直接部署就能用那种。 | 让客户少花钱，然后也能用，不串联到业务中，对业务0影响。 | 部署简单，一键部署，或者直接随着元豚科技生态自动部署。 | . ",
     "url": "http://localhost:4000/",
     "relUrl": "/"
-  },"28": {
+  },"11": {
+    "doc": "漏洞风险管理",
+    "title": "介绍&amp;洞察",
+    "content": "漏洞风险的管理基本上每个公司都会涉及到，过去一直都是每个公司开发自己的独立的功能，但是殊俗同归，基本都是漏洞的整个生命周期管理。站在工作台的角度，我们面对的画像是安全、运维侧的同学，所以我们更多面对这类人群去做深入，让他们用的更加舒服为主，而实际推进落地修复，更多依赖第三方集成来实现，这里有些洞察： . | 业务侧本身就有很多平台，如worktle、Jira、禅道、Wiki等，实际上大家都在做减法，我们再做个加法就有点难受了。 | 整个闭环周期其实在第三方平台已经能够快速满足提醒、跟进的能力，无需太多的操作即可实现，但第三方的集成要做更多的事，从评估、对接、再到研究、开发，就是时间周期，折腾下来还不一定能够通用，因为每个公司内部都不一样，涉及到如权限、身份、角色等，就更加麻烦了，所以一般都特别不好整。 | 涉及到多样的性的漏洞特征、多样性的数据源，内部系统直接对外拉通也很不安全，对内部会带来困扰，最常见就是漏洞直接第三方托管之后，被弱口令暴露出来。 | . 元豚科技在漏洞管理这块有几个特点： . | 针对第三方数据源，我们开放OpenAPI，客户可以托管到云上，独立分离部署，第三方可以根据OpenAPI标签化的录入漏洞风险，直达W3A SOC的工作台里，再由安全人员进行管理处置。 | 内部拉通的动作，OpenAPI可以直接输出，可以找元豚科技帮您对接内部的服务，如Jira、禅道等第三方，也可以自己集成，数据源统一之后，自己就能玩，定制完一次之后，后续没有任何成本，直接就能同步到内部环境和平台，简单直接。 | 针对扫描器，或者定制的扫描服务，只要发现的问题，根据需要直接通过OpenAPI录入，可以自行完善闭环，快速方便，如已经打通了上游，这个就更加简单了。 | . ",
+    "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86#%E4%BB%8B%E7%BB%8D%E6%B4%9E%E5%AF%9F",
+    "relUrl": "/漏洞风险管理#介绍洞察"
+  },"12": {
+    "doc": "漏洞风险管理",
+    "title": "使用方式",
+    "content": "点击「漏洞管理」即可看到漏洞管理的功能，可以新建、处理漏洞的信息。 . ",
+    "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F",
+    "relUrl": "/漏洞风险管理#使用方式"
+  },"13": {
     "doc": "漏洞风险管理",
     "title": "漏洞风险管理",
-    "content": "漏洞风险的管理基本上每个公司都会涉及到，过去一直都是每个公司开发自己的独立的功能，但是殊俗同归，基本都是漏洞的整个生命周期管理。站在工作台的角度，我们面对的画像是安全、运维侧的同学，所以我们更多面对这类人群去做深入，让他们用的更加舒服为主，而实际推进落地修复，更多依赖第三方集成来实现，这里有些洞察： . | 业务侧本身就有很多平台，如worktle、Jira、禅道、Wiki等，实际上大家都在做减法，我们再做个加法就有点难受了。 | 整个闭环周期其实在第三方平台已经能够快速满足提醒、跟进的能力，无需太多的操作即可实现，但第三方的集成要做更多的事，从评估、对接、再到研究、开发，就是时间周期，折腾下来还不一定能够通用，因为每个公司内部都不一样，涉及到如权限、身份、角色等，就更加麻烦了，所以一般都特别不好整。 | 涉及到多样的性的漏洞特征、多样性的数据源，内部系统直接对外拉通也很不安全，对内部会带来困扰，最常见就是漏洞直接第三方托管之后，被弱口令暴露出来。 | . 元豚科技在漏洞管理这块有几个特点： . | 针对第三方数据源，我们开放OpenAPI，客户可以托管到云上，独立分离部署，第三方可以根据OpenAPI标签化的录入漏洞风险，直达W3A SOC的工作台里，再由安全人员进行管理处置。 | 内部拉通的动作，OpenAPI可以直接输出，可以找元豚科技帮您对接内部的服务，如Jira、禅道等第三方，也可以自己集成，数据源统一之后，自己就能玩，定制完一次之后，后续没有任何成本，直接就能同步到内部环境和平台，简单直接。 | 针对扫描器，或者定制的扫描服务，只要发现的问题，根据需要直接通过OpenAPI录入，可以自行完善闭环，快速方便，如已经打通了上游，这个就更加简单了。 | . ",
+    "content": " ",
     "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86",
     "relUrl": "/漏洞风险管理"
-  },"29": {
+  },"14": {
     "doc": "配置Kafka采集器",
     "title": "配置&amp;解释",
     "content": "日志进入Kafka之后，多个端进行消费，本身W3A SOC 的Agent端就会进行读取分析，同时也需要将这个日志放到ES上(主要用于日志查询，在平台里有个Web日志查询的功能，直接联动ES的，实现简单的查询服务，后续会做一些特殊的查询功能放到平台里，具体有需要可以提需求定制也行)，这个时候就可以配置一个Filebeat端进行日志的推送，从Kafka消费到ES里。在docker-compose里我有写好的配置文件可作参考，具体解释下： . | hosts: [“elasticsearch:9200”] 中 「elasticsearch」是实际的es的地址，这里用的是docker-compose的服务名，如果你有自己的ES，可以直接写自己的ES的IP地址或域名，直接替换就行，但是记得一定要能通啊，不然发不过去。 | hosts: [“kafka:9092”] 中「kafka」是实际的Kafka数据源地址，如果有自己的Kafka并且已经配置好配置Nginx采集器的话，直接就用那个kafka地址就行，我这里写的是docker-compose的服务名称。 | . filebeat.inputs: - type: kafka enabled: true hosts: [\"kafka:9092\"] topics: [\"weblogs\"] group_id: \"weblogs\" json.keys_under_root: true json.add_error_key: true json.overwrite_keys: true output.elasticsearch: hosts: [\"elasticsearch:9200\"] index: \"weblog-%{+yyyy.MM.dd}\" setup.template.name: \"filebeattest\" setup.template.pattern: \"filebeattest-*\" processors: # kafka的消息会在message字段，通过该processor将json解析出来 - decode_json_fields: fields: [\"message\"] process_array: true max_depth: 1 target: \"\" overwrite_keys: true add_error_key: true # 下边这两个处理器根据自身需求设置 # 将json中start_time字段的时间放到@timestamp中 - timestamp: # 格式化时间值 给 时间戳 field: start_time # 使用我国东八区时间 格式化log时间 timezone: Asia/Shanghai layouts: # - '2006-01-02 15:04:05' - '2006-01-02 15:04:05.999' test: - '2019-06-22 16:33:51.111' . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AEKafka%E9%87%87%E9%9B%86%E5%99%A8#%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A",
     "relUrl": "/日志审计/配置Kafka采集器#配置解释"
-  },"30": {
+  },"15": {
     "doc": "配置Kafka采集器",
     "title": "配置Kafka采集器",
     "content": " ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AEKafka%E9%87%87%E9%9B%86%E5%99%A8",
     "relUrl": "/日志审计/配置Kafka采集器"
-  },"31": {
+  },"16": {
     "doc": "配置Nginx采集器",
     "title": "演进&amp;洞察",
     "content": "现在经过几年的技术演进，我们不再自己造轮子自己写这个采集端，因为相对来讲不太稳健： . | 容易崩，一旦崩了会带来各种问题，还得维护、排错，也不知道哪个地方出问题，说不定是语法，或者各种奇奇怪怪的场景。 | 中间层不太稳健，量大的就出各种问题，取决于机器性能和日志处理的瓶颈。 | . 最好的方式还是基于现成的采集来实现，选型中有Flume、Logstash，也有Filebeat这些，看了下对比：参考指南最终，因为分析工具是基于Golang的，而且我们整个工作台也是奔着云原生的方向去走，所以，我们在采集这端优先用Filebeat，主要洞察是： . | 针对中小型的客户，比较好融合，基于Kafka实现，订阅消费的模式比较容易解耦。（正正合适，对业务0嵌入） | 针对中大型的客户，如日志量到PB级一天，这种基于Hadoop集群的模式，可以单独再聊，不在本文范畴里。（从画像来讲，这类客户极其罕见，真有，我们可以定制） | Kafka相对稳健成熟的基础设施，不需要过多对比，什么性能指标、各种推理，客户不用有过多的顾虑，怕用一个不成熟的第三方，导致各种问题，怕自研的采集器要么不维护，要么不稳定，中立挺好，kafka大家都熟，没有顾虑。 | 兼容容器集群（K8S）的场景，在容器中基于Filebeat采集有天然优势，这个在后续融合HIDS(平台后续具备的能力)的时候，就更加简单容易，天然结合。 | . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#%E6%BC%94%E8%BF%9B%E6%B4%9E%E5%AF%9F",
     "relUrl": "/日志审计/配置Nginx采集器#演进洞察"
-  },"32": {
+  },"17": {
     "doc": "配置Nginx采集器",
     "title": "配置&amp;解释",
     "content": "从docker-compose的配置文件上，就能看到这个采集的用法。 . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A",
     "relUrl": "/日志审计/配置Nginx采集器#配置解释"
-  },"33": {
+  },"18": {
     "doc": "配置Nginx采集器",
     "title": "filebeat基础配置",
     "content": "filebeat.inputs: - type: log enabled: true fields: source: nginx_access_log paths: - /var/log/nginx/access*.log json.keys_under_root: true json.overwrite_keys: true output.kafka: hosts: [\"kafka:9092\"] topic: weblogs required_acks: 1 . 这端主要做的是： . | 把Nginx日志采集到Kafka中，进行存储，用于Golang写的分析工具对日志数据进行分析。 | 要把Nginx的日志基于Json方式格式化好放进去，好让工具解析。 | hosts: [“kafka:9092”] 这个地方的「kafka」可以替换成kafka的域名、或者ID，如果有自建的就写自建的就行了，我这里写的是docker-compose里的服务名 | topic: weblogs 这个「weblogs」可以替换成你想要的日志名称，我建议就用这个，因为默认就是分析Web日志。 | . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#filebeat%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE",
     "relUrl": "/日志审计/配置Nginx采集器#filebeat基础配置"
-  },"34": {
+  },"19": {
     "doc": "配置Nginx采集器",
     "title": "Nginx基础配置",
     "content": "在nginx这一端，也要做些轻微改动，如果本身就是JSON格式，对一下配置就可以，主要看 log_format 的 log_json这个部分，因为里面的字段都是对应的，如果已经有了Nginx的配置，就加一个这个就行。 . 这里我们自己用的是openresty，用原生的Nginx也可以的，不限制具体用哪个。 . worker_processes auto; #error_log \"/opt/bitnami/nginx/logs/error.log\"; pid \"/tmp/nginx.pid\"; events { worker_connections 1024; } http { include mime.types; default_type application/octet-stream; log_format main '$remote_addr - $remote_user [$time_local]' '\"$request\" $status $body_bytes_sent \"$http_referer\" ' '\"$http_user_agent\" \"$http_x_forwarded_for\" \"$http_host\" \"$request_time\" \"$upstream_response_time\" \"$request_body\"'; #access_log \"/opt/bitnami/nginx/logs/access.log\" main; log_format log_json '{\"@timestamp\": \"$time_local\",\"request_body\":\"$request_body\",\"remote_addr\":\"$remote_addr\",\"http_host\":\"$http_host\",\"request\":\"$request\",\"status\":\"$status\",\"body_bytes_sents\":\"$body_bytes_sent\",\"req_time\":\"$request_time\",\"http_user_agent\":\"$http_user_agent\", \"http_referer\":\"$http_referer\", \"request_method\":\"$request_method\", \"http_x_forwarded_for\":\"$http_x_forwarded_for\"}'; #access_log \"/usr/local/openresty/nginx/logs/access.log\" log_json; add_header X-Frame-Options SAMEORIGIN; client_body_temp_path \"/tmp/client_body\" 1 2; proxy_temp_path \"/tmp/proxy\" 1 2; fastcgi_temp_path \"/tmp/fastcgi\" 1 2; scgi_temp_path \"/tmp/scgi\" 1 2; uwsgi_temp_path \"/tmp/uwsgi\" 1 2; client_body_buffer_size 1024k; fastcgi_buffers 32 16k; sendfile on; gzip on; gzip_http_version 1.0; gzip_comp_level 2; gzip_proxied any; gzip_types text/plain text/css application/javascript text/xml application/xml+rss; keepalive_timeout 65; client_max_body_size 80M; server_tokens off; #include \"/opt/bitnami/nginx/conf/server_blocks/*.conf\"; # HTTP Server server { lua_need_request_body on; access_log \"/usr/local/openresty/nginx/logs/access.log\" log_json; listen 8080; server_name api.example.com; location / { proxy_pass \"http://www.aidolphins.com\"; proxy_set_header X-Forwarded-Proto $scheme; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; root html; index index.html index.htm; } } } . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#nginx%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE",
     "relUrl": "/日志审计/配置Nginx采集器#nginx基础配置"
-  },"35": {
+  },"20": {
     "doc": "配置Nginx采集器",
     "title": "配置Nginx采集器",
     "content": " ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8",
     "relUrl": "/日志审计/配置Nginx采集器"
-  },"36": {
-    "doc": "配置审计规则",
-    "title": "配置审计规则",
-    "content": "通过分析和配置系统潜在的代码修改点，进而通过依赖关系，分析出变更的影响范围。它即能帮助架构师分析需求的影响，又能帮助测试人员更精准地测试系统中的内容。 . ",
-    "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AE%E5%AE%A1%E8%AE%A1%E8%A7%84%E5%88%99",
-    "relUrl": "/日志审计/配置审计规则"
-  },"37": {
-    "doc": "联动自建扫描器",
-    "title": "联动自建扫描器",
-    "content": "通过分析和配置系统潜在的代码修改点，进而通过依赖关系，分析出变更的影响范围。它即能帮助架构师分析需求的影响，又能帮助测试人员更精准地测试系统中的内容。 . ",
-    "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86/%E8%81%94%E5%8A%A8%E8%87%AA%E5%BB%BA%E6%89%AB%E6%8F%8F%E5%99%A8",
-    "relUrl": "/漏洞风险管理/联动自建扫描器"
-  },"38": {
-    "doc": "联动内部流程",
-    "title": "联动内部流程",
-    "content": "通过分析和配置系统潜在的代码修改点，进而通过依赖关系，分析出变更的影响范围。它即能帮助架构师分析需求的影响，又能帮助测试人员更精准地测试系统中的内容。 . ",
-    "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86/%E8%81%94%E5%8A%A8%E5%86%85%E9%83%A8%E6%B5%81%E7%A8%8B",
-    "relUrl": "/漏洞风险管理/联动内部流程"
   }
 }
