@@ -60,65 +60,83 @@
     "relUrl": "/#访问web部分"
   },"10": {
     "doc": "W3A SOC",
+    "title": "备注",
+    "content": ". | 一直以来都有人问我到底还是否继续更新迭代，不断有人加我，还给我鼓励，时隔六年，沉淀积累之后，准备再做一套新的，可以持续更新维护的版本。 | 诸位发现问题请直接提交issue，如果有定制化需求，麻烦支持下收费版本，在内部推动下元豚科技的产品啥的，感激不尽。 | 项目元豚科技接管之后，起码不会荒废，只要公司一直在，项目就会更新。 | 旧的版本在release，那个版本是开源的，代码开放，有需要自行提取。 | . ",
+    "url": "http://localhost:4000/#%E5%A4%87%E6%B3%A8",
+    "relUrl": "/#备注"
+  },"11": {
+    "doc": "W3A SOC",
+    "title": "客户体验计划",
+    "content": ". | 欢迎种子用户，早期的种子用户后期可以优先体验商业版功能，欢迎扫码加我微信，我后面拉群。 | 欢迎提意见和场景，我们想办法满足，如果有好的日志样本也可以提供给我们。 | . ",
+    "url": "http://localhost:4000/#%E5%AE%A2%E6%88%B7%E4%BD%93%E9%AA%8C%E8%AE%A1%E5%88%92",
+    "relUrl": "/#客户体验计划"
+  },"12": {
+    "doc": "W3A SOC",
+    "title": "加我",
+    "content": ". ",
+    "url": "http://localhost:4000/#%E5%8A%A0%E6%88%91",
+    "relUrl": "/#加我"
+  },"13": {
+    "doc": "W3A SOC",
     "title": "W3A SOC",
     "content": ". 基于日志安全分析做切入，做最好用的安全运维工作台。 . 主要特性 . | 日志分析: 基于kafka+GoLang的方式，对采集的Web和系统应用日志进行攻击行为的分析。 | 篡改监控: 基于Golang开发的页面篡改监控。 | 业务连续性监控: 基于网络的业务连续性监控服务，确定业务是否有中断。 | 告警整合: 实现钉钉、企业微信的联动告警机制。 | 部署支持：docker-compose、Kubernetes。 | 整体架构：基于 Filebeat(采集/清洗) + Kafka(汇聚) + ElasticSearch(检索) | 技术实现：后端基于Java，前端基于Vue，数据库基于MYSQL。 | . 目标 . | 满足等保二级、三级的需求，直接部署就能用那种。 | 让客户少花钱，然后也能用，不串联到业务中，对业务0影响。 | 部署简单，一键部署，或者直接随着元豚科技生态自动部署。 | . ",
     "url": "http://localhost:4000/",
     "relUrl": "/"
-  },"11": {
+  },"14": {
     "doc": "漏洞风险管理",
     "title": "介绍&amp;洞察",
     "content": "漏洞风险的管理基本上每个公司都会涉及到，过去一直都是每个公司开发自己的独立的功能，但是殊俗同归，基本都是漏洞的整个生命周期管理。站在工作台的角度，我们面对的画像是安全、运维侧的同学，所以我们更多面对这类人群去做深入，让他们用的更加舒服为主，而实际推进落地修复，更多依赖第三方集成来实现，这里有些洞察： . | 业务侧本身就有很多平台，如worktle、Jira、禅道、Wiki等，实际上大家都在做减法，我们再做个加法就有点难受了。 | 整个闭环周期其实在第三方平台已经能够快速满足提醒、跟进的能力，无需太多的操作即可实现，但第三方的集成要做更多的事，从评估、对接、再到研究、开发，就是时间周期，折腾下来还不一定能够通用，因为每个公司内部都不一样，涉及到如权限、身份、角色等，就更加麻烦了，所以一般都特别不好整。 | 涉及到多样的性的漏洞特征、多样性的数据源，内部系统直接对外拉通也很不安全，对内部会带来困扰，最常见就是漏洞直接第三方托管之后，被弱口令暴露出来。 | . 元豚科技在漏洞管理这块有几个特点： . | 针对第三方数据源，我们开放OpenAPI，客户可以托管到云上，独立分离部署，第三方可以根据OpenAPI标签化的录入漏洞风险，直达W3A SOC的工作台里，再由安全人员进行管理处置。 | 内部拉通的动作，OpenAPI可以直接输出，可以找元豚科技帮您对接内部的服务，如Jira、禅道等第三方，也可以自己集成，数据源统一之后，自己就能玩，定制完一次之后，后续没有任何成本，直接就能同步到内部环境和平台，简单直接。 | 针对扫描器，或者定制的扫描服务，只要发现的问题，根据需要直接通过OpenAPI录入，可以自行完善闭环，快速方便，如已经打通了上游，这个就更加简单了。 | . ",
     "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86#%E4%BB%8B%E7%BB%8D%E6%B4%9E%E5%AF%9F",
     "relUrl": "/漏洞风险管理#介绍洞察"
-  },"12": {
+  },"15": {
     "doc": "漏洞风险管理",
     "title": "使用方式",
     "content": "点击「漏洞管理」即可看到漏洞管理的功能，可以新建、处理漏洞的信息。 . ",
     "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F",
     "relUrl": "/漏洞风险管理#使用方式"
-  },"13": {
+  },"16": {
     "doc": "漏洞风险管理",
     "title": "漏洞风险管理",
     "content": " ",
     "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86",
     "relUrl": "/漏洞风险管理"
-  },"14": {
+  },"17": {
     "doc": "配置Kafka采集器",
     "title": "配置&amp;解释",
     "content": "日志进入Kafka之后，多个端进行消费，本身W3A SOC 的Agent端就会进行读取分析，同时也需要将这个日志放到ES上(主要用于日志查询，在平台里有个Web日志查询的功能，直接联动ES的，实现简单的查询服务，后续会做一些特殊的查询功能放到平台里，具体有需要可以提需求定制也行)，这个时候就可以配置一个Filebeat端进行日志的推送，从Kafka消费到ES里。在docker-compose里我有写好的配置文件可作参考，具体解释下： . | hosts: [“elasticsearch:9200”] 中 「elasticsearch」是实际的es的地址，这里用的是docker-compose的服务名，如果你有自己的ES，可以直接写自己的ES的IP地址或域名，直接替换就行，但是记得一定要能通啊，不然发不过去。 | hosts: [“kafka:9092”] 中「kafka」是实际的Kafka数据源地址，如果有自己的Kafka并且已经配置好配置Nginx采集器的话，直接就用那个kafka地址就行，我这里写的是docker-compose的服务名称。 | . filebeat.inputs: - type: kafka enabled: true hosts: [\"kafka:9092\"] topics: [\"weblogs\"] group_id: \"weblogs\" json.keys_under_root: true json.add_error_key: true json.overwrite_keys: true output.elasticsearch: hosts: [\"elasticsearch:9200\"] index: \"weblog-%{+yyyy.MM.dd}\" setup.template.name: \"filebeattest\" setup.template.pattern: \"filebeattest-*\" processors: # kafka的消息会在message字段，通过该processor将json解析出来 - decode_json_fields: fields: [\"message\"] process_array: true max_depth: 1 target: \"\" overwrite_keys: true add_error_key: true # 下边这两个处理器根据自身需求设置 # 将json中start_time字段的时间放到@timestamp中 - timestamp: # 格式化时间值 给 时间戳 field: start_time # 使用我国东八区时间 格式化log时间 timezone: Asia/Shanghai layouts: # - '2006-01-02 15:04:05' - '2006-01-02 15:04:05.999' test: - '2019-06-22 16:33:51.111' . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AEKafka%E9%87%87%E9%9B%86%E5%99%A8#%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A",
     "relUrl": "/日志审计/配置Kafka采集器#配置解释"
-  },"15": {
+  },"18": {
     "doc": "配置Kafka采集器",
     "title": "配置Kafka采集器",
     "content": " ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AEKafka%E9%87%87%E9%9B%86%E5%99%A8",
     "relUrl": "/日志审计/配置Kafka采集器"
-  },"16": {
+  },"19": {
     "doc": "配置Nginx采集器",
     "title": "演进&amp;洞察",
     "content": "现在经过几年的技术演进，我们不再自己造轮子自己写这个采集端，因为相对来讲不太稳健： . | 容易崩，一旦崩了会带来各种问题，还得维护、排错，也不知道哪个地方出问题，说不定是语法，或者各种奇奇怪怪的场景。 | 中间层不太稳健，量大的就出各种问题，取决于机器性能和日志处理的瓶颈。 | . 最好的方式还是基于现成的采集来实现，选型中有Flume、Logstash，也有Filebeat这些，看了下对比：参考指南最终，因为分析工具是基于Golang的，而且我们整个工作台也是奔着云原生的方向去走，所以，我们在采集这端优先用Filebeat，主要洞察是： . | 针对中小型的客户，比较好融合，基于Kafka实现，订阅消费的模式比较容易解耦。（正正合适，对业务0嵌入） | 针对中大型的客户，如日志量到PB级一天，这种基于Hadoop集群的模式，可以单独再聊，不在本文范畴里。（从画像来讲，这类客户极其罕见，真有，我们可以定制） | Kafka相对稳健成熟的基础设施，不需要过多对比，什么性能指标、各种推理，客户不用有过多的顾虑，怕用一个不成熟的第三方，导致各种问题，怕自研的采集器要么不维护，要么不稳定，中立挺好，kafka大家都熟，没有顾虑。 | 兼容容器集群（K8S）的场景，在容器中基于Filebeat采集有天然优势，这个在后续融合HIDS(平台后续具备的能力)的时候，就更加简单容易，天然结合。 | . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#%E6%BC%94%E8%BF%9B%E6%B4%9E%E5%AF%9F",
     "relUrl": "/日志审计/配置Nginx采集器#演进洞察"
-  },"17": {
+  },"20": {
     "doc": "配置Nginx采集器",
     "title": "配置&amp;解释",
     "content": "从docker-compose的配置文件上，就能看到这个采集的用法。 . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A",
     "relUrl": "/日志审计/配置Nginx采集器#配置解释"
-  },"18": {
+  },"21": {
     "doc": "配置Nginx采集器",
     "title": "filebeat基础配置",
     "content": "filebeat.inputs: - type: log enabled: true fields: source: nginx_access_log paths: - /var/log/nginx/access*.log json.keys_under_root: true json.overwrite_keys: true output.kafka: hosts: [\"kafka:9092\"] topic: weblogs required_acks: 1 . 这端主要做的是： . | 把Nginx日志采集到Kafka中，进行存储，用于Golang写的分析工具对日志数据进行分析。 | 要把Nginx的日志基于Json方式格式化好放进去，好让工具解析。 | hosts: [“kafka:9092”] 这个地方的「kafka」可以替换成kafka的域名、或者ID，如果有自建的就写自建的就行了，我这里写的是docker-compose里的服务名 | topic: weblogs 这个「weblogs」可以替换成你想要的日志名称，我建议就用这个，因为默认就是分析Web日志。 | . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#filebeat%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE",
     "relUrl": "/日志审计/配置Nginx采集器#filebeat基础配置"
-  },"19": {
+  },"22": {
     "doc": "配置Nginx采集器",
     "title": "Nginx基础配置",
     "content": "在nginx这一端，也要做些轻微改动，如果本身就是JSON格式，对一下配置就可以，主要看 log_format 的 log_json这个部分，因为里面的字段都是对应的，如果已经有了Nginx的配置，就加一个这个就行。 . 这里我们自己用的是openresty，用原生的Nginx也可以的，不限制具体用哪个。 . worker_processes auto; #error_log \"/opt/bitnami/nginx/logs/error.log\"; pid \"/tmp/nginx.pid\"; events { worker_connections 1024; } http { include mime.types; default_type application/octet-stream; log_format main '$remote_addr - $remote_user [$time_local]' '\"$request\" $status $body_bytes_sent \"$http_referer\" ' '\"$http_user_agent\" \"$http_x_forwarded_for\" \"$http_host\" \"$request_time\" \"$upstream_response_time\" \"$request_body\"'; #access_log \"/opt/bitnami/nginx/logs/access.log\" main; log_format log_json '{\"@timestamp\": \"$time_local\",\"request_body\":\"$request_body\",\"remote_addr\":\"$remote_addr\",\"http_host\":\"$http_host\",\"request\":\"$request\",\"status\":\"$status\",\"body_bytes_sents\":\"$body_bytes_sent\",\"req_time\":\"$request_time\",\"http_user_agent\":\"$http_user_agent\", \"http_referer\":\"$http_referer\", \"request_method\":\"$request_method\", \"http_x_forwarded_for\":\"$http_x_forwarded_for\"}'; #access_log \"/usr/local/openresty/nginx/logs/access.log\" log_json; add_header X-Frame-Options SAMEORIGIN; client_body_temp_path \"/tmp/client_body\" 1 2; proxy_temp_path \"/tmp/proxy\" 1 2; fastcgi_temp_path \"/tmp/fastcgi\" 1 2; scgi_temp_path \"/tmp/scgi\" 1 2; uwsgi_temp_path \"/tmp/uwsgi\" 1 2; client_body_buffer_size 1024k; fastcgi_buffers 32 16k; sendfile on; gzip on; gzip_http_version 1.0; gzip_comp_level 2; gzip_proxied any; gzip_types text/plain text/css application/javascript text/xml application/xml+rss; keepalive_timeout 65; client_max_body_size 80M; server_tokens off; #include \"/opt/bitnami/nginx/conf/server_blocks/*.conf\"; # HTTP Server server { lua_need_request_body on; access_log \"/usr/local/openresty/nginx/logs/access.log\" log_json; listen 8080; server_name api.example.com; location / { proxy_pass \"http://www.aidolphins.com\"; proxy_set_header X-Forwarded-Proto $scheme; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; root html; index index.html index.htm; } } } . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#nginx%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE",
     "relUrl": "/日志审计/配置Nginx采集器#nginx基础配置"
-  },"20": {
+  },"23": {
     "doc": "配置Nginx采集器",
     "title": "配置Nginx采集器",
     "content": " ",
