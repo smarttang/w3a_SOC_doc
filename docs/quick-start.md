@@ -6,6 +6,10 @@ description: "W3A SOC 是一个针对于微服务（分布式场景）下的架�
 permalink: /
 ---
 
+<img style="width:660px" title="Run example" alt="Run example" src="/WechatIMG204.png">
+
+
+
 <p align="center">
 基于日志安全分析做切入，做最好用的安全运维工作台。<br>
 </p>
