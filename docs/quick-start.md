@@ -67,6 +67,11 @@ cd w3a_SOC/deploy/docker-compose/test-environment/
 docker-compose up -d
 ```
 
+## 漏洞管理图片上传
+
+如果需要用图片上传功能，在腾讯云开一个COS，然后再docker-compose上改改对应的配置即可。
+
+
 ## 服务启动后的效果
 
 ```
