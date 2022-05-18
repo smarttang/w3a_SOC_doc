@@ -1,146 +1,296 @@
 {"0": {
+    "doc": "非容器部署",
+    "title": "使用场景",
+    "content": "部分企业有实际的场景，由于某些原因，架构依然还在物理机、虚拟机的环境下，这个时候想用W3A SOC怎么搞？ 针对这个场景，咱同样能兼容，采集的部分参考「日志审计」栏目给的指引去操作就行，部署这端怎么做呢？ . | 方案A，基于物理机或者虚拟机下，安装docker-compose，然后一键启动，这个不是这次的重点，就不展开了。 | 方案B，元豚可代为部署，收取少量部署费用，需要开启SSH，然后联系客服即可，微信扫首页最下面那个加我就行。 | 方案C，单独一个个服务整起来，这个就有点麻烦了，考虑到上手的难度，这个章节就是解决这个问题。 | . ",
+    "url": "http://localhost:4000/docs/soc/cloudout.html#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF",
+    "relUrl": "/docs/soc/cloudout.html#使用场景"
+  },"1": {
+    "doc": "非容器部署",
+    "title": "部署所需",
+    "content": ". | JavaJDK环境（建议是：≥15.0.5） | MYSQL/MariaDB环境（不限制版本） | Web端，需要Nginx | . ",
+    "url": "http://localhost:4000/docs/soc/cloudout.html#%E9%83%A8%E7%BD%B2%E6%89%80%E9%9C%80",
+    "relUrl": "/docs/soc/cloudout.html#部署所需"
+  },"2": {
+    "doc": "非容器部署",
+    "title": "非容器部署",
+    "content": " ",
+    "url": "http://localhost:4000/docs/soc/cloudout.html",
+    "relUrl": "/docs/soc/cloudout.html"
+  },"3": {
     "doc": "功能地图",
     "title": "安全功能地图（未来适配的能力家谱）",
     "content": "| 服务 | 云上 | 云下 | 容器化 | 版本 | 时间 | . | 日志审计 | √ | √ | √ | v1.0.6 | 2022.5.13 | . | 告警管理 | √ | √ | √ | v1.0.6 | 2022.5.13 | . | 漏洞风险管理 | √ | √ | √ | v1.0.7 | 2022.5.18 | . | WAF防护 | - | - | - | - | - | . | 资产发现 | - | - | - | - | - | . | Web漏洞扫描 | - | - | - | - | - | . | 弱口令扫描 | - | - | - | - | - | . | 系统漏洞扫描 | - | - | - | - | - | . | 主机防护 | - | - | - | - | - | . | 基线检测 | - | - | - | - | - | . | 流量分析 | - | - | - | - | - | . | 工程分析(SCA/合规) | - | - | - | - | - | . | 系统漏洞扫描 | - | - | - | - | - | . | 蜜罐服务 | - | - | - | - | - | . | HIDS主机防护 | - | - | - | - | - | . | 合规服务 | - | - | - | - | - | . | 服务广场 | - | - | - | - | - | . ",
     "url": "http://localhost:4000/W3A#%E5%AE%89%E5%85%A8%E5%8A%9F%E8%83%BD%E5%9C%B0%E5%9B%BE%E6%9C%AA%E6%9D%A5%E9%80%82%E9%85%8D%E7%9A%84%E8%83%BD%E5%8A%9B%E5%AE%B6%E8%B0%B1",
     "relUrl": "/W3A#安全功能地图未来适配的能力家谱"
-  },"1": {
+  },"4": {
     "doc": "功能地图",
     "title": "功能地图",
     "content": " ",
     "url": "http://localhost:4000/W3A",
     "relUrl": "/W3A"
-  },"2": {
+  },"5": {
+    "doc": "容器部署",
+    "title": "docker-compose",
+    "content": "这个是我们最优推荐的部署方式，因为简单直接。我们看到很多友商，部署上都特别费劲，不能一键启动，各种参数搞得头昏脑胀，我们想的是：「让我们复杂，让用户简单」。 . 优先建议，直接基于docker-compose启动，这个最好。在docker-compose上，有些参数只需要微调，就能满足大家需求。后续包括漏洞扫描、Waf之类的，基于Docker-compose一瞬间就能启动，简单直接的很，不需要有太多的部署参数，一瞬间就能搞起来。 . ",
+    "url": "http://localhost:4000/docs/soc/contanior.html#docker-compose",
+    "relUrl": "/docs/soc/contanior.html#docker-compose"
+  },"6": {
+    "doc": "容器部署",
+    "title": "分析docker-compose的内容",
+    "content": "所有W3A开头的项都是W3A SOC必备的内容，其中，Mysql这块全自动化给你导入数据了，你就不用管了，一下就起来，中间不用操作什么，其它的参数需要给大家解释下： . # 分析端 w3aAgent: image: registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-agent:v1.0.8 environment: - topic=weblogs - kafka=kafka:9092 - openapi=w3aopenapi:8080 - modes=analyze # 告警端 w3aAlterAgent: image: registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-agent:v1.0.8 environment: - topic=weblogs - kafka=kafka:9092 - openapi=w3aopenapi:8080 - modes=alters # Web前端 w3aFrotend: image: registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-frontend:v1.0.8 ports: - '81:80' depends_on: - w3aDashboard # 后端 w3aDashboard: image: registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-dashboard:v1.0.8 ports: - '8081:8080' environment: - MYSQL_ADDRESS=jdbc:mysql://w3aMysql:3306/w3a_soc?characterEncoding=utf-8&amp;useSSL=false - MYSQL_USERNAME=root - MYSQL_PASSWORD=testw3a - REDIS_HOST=w3aRedis - REDIS_PORT=6379 - REDIS_DATABASE=5 # - COS_ACCESSKEY=[自己的accessKeyId] # - COS_SECRETKEY=[自己的secretkey] # - COS_REGIONNAME=[对应cos的地区] # - COS_BUCKETNAME=[bucket] # - COS_BASEURL=[具体的cos的主地址，记得要带上https://] depends_on: - w3aMysql - w3aRedis # openAPI w3aopenapi: image: registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-openapi:v1.0.8 ports: - '8082:8080' environment: - MYSQL_ADDRESS=jdbc:mysql://w3aMysql:3306/w3a_soc?characterEncoding=utf-8&amp;useSSL=false - MYSQL_USERNAME=root - MYSQL_PASSWORD=testw3a - REDIS_HOST=w3aRedis - REDIS_PORT=6379 - REDIS_DATABASE=4 depends_on: - kafka depends_on: - w3aMysql - w3aRedis # mysql w3aMysql: image: registry.cn-beijing.aliyuncs.com/aidolphins_com/mysql:v1 volumes: - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql ports: - '3306:3306' environment: - MYSQL_ROOT_PASSWORD=testw3a # redis w3aRedis: image: registry.cn-beijing.aliyuncs.com/aidolphins_com/redis:v1 ports: - '6379:6379' . ",
+    "url": "http://localhost:4000/docs/soc/contanior.html#%E5%88%86%E6%9E%90docker-compose%E7%9A%84%E5%86%85%E5%AE%B9",
+    "relUrl": "/docs/soc/contanior.html#分析docker-compose的内容"
+  },"7": {
+    "doc": "容器部署",
+    "title": "容器部署",
+    "content": " ",
+    "url": "http://localhost:4000/docs/soc/contanior.html",
+    "relUrl": "/docs/soc/contanior.html"
+  },"8": {
+    "doc": "服务端",
+    "title": "服务端参数解释：",
+    "content": "服务端也是同理，基于Env获取参数，默认Dashboard端如果不需要上传图片，可以把COS去掉，但是我建议配置上，因为漏洞管理最好有图片方便验证。 . - MYSQL_ADDRESS=jdbc:mysql://w3aMysql:3306/w3a_soc?characterEncoding=utf-8&amp;useSSL=false - MYSQL_USERNAME=root - MYSQL_PASSWORD=testw3a - REDIS_HOST=w3aRedis - REDIS_PORT=6379 - REDIS_DATABASE=5 - COS_ACCESSKEY=[自己的accessKeyId] - COS_SECRETKEY=[自己的secretkey] - COS_REGIONNAME=[对应cos的地区] - COS_BUCKETNAME=[bucket] - COS_BASEURL=[具体的cos的主地址，记得要带上https://] . 具体参数解释：这里一定要注意，COS_BASEURL一定要完整的地址，因为要展示图片用! . - MYSQL_ADDRESS 数据库地址 - MYSQL_USERNAME 数据库账号 - MYSQL_PASSWORD 数据库密码 - REDIS_HOST redis地址 - REDIS_PORT redis端口 - REDIS_DATABASE redis用的库 - COS_ACCESSKEY AccessKey - COS_SECRETKEY SecretKey - COS_REGIONNAME 归属地，比如：ap-beijing - COS_BUCKETNAME bucket,比如：test-19281913 - COS_BASEURL cos的地址，比如：https://test-19281913.cos.ap-beijing.myqcloud.com . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E6%9C%8D%E5%8A%A1%E7%AB%AF#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A",
+    "relUrl": "/部署管理/容器部署/服务端#服务端参数解释"
+  },"9": {
+    "doc": "服务端",
+    "title": "服务端",
+    "content": " ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E6%9C%8D%E5%8A%A1%E7%AB%AF",
+    "relUrl": "/部署管理/容器部署/服务端"
+  },"10": {
+    "doc": "工具端",
+    "title": "工具端参数解释：",
+    "content": "针对Agent端解释下，咱这个都是基于Env来获取的，默认情况下在K8S里是configmap，在docker-compose就是environment，这个具体的概念可以百度下，我就不说了。 不管入参是什么，工具默认优先就是本地环境的Env的参数，如果有设置，就按照Env的走，最后会有判断，因为我们优先给容器环境的同学使用更加便利一些，毕竟容器环境比较省事。 . - topic=weblogs 替换成自己的kafka的topic名称 - kafka=kafka:9092 替换成自己的Kafka地址和端口 - openapi=w3aopenapi:8080 替换成自己的部署的W3A服务端开放平台对应的域名，或者IP。 - modes=analyze 具体启动的模块 . 工具这块，直接 -h 一下就有介绍，对标就明白了。 . ➜ bin ./w3a-soc-agent -h Usage of ./w3a-soc-agent: -A string 日志归一的kafka的地址:端口,可以多个,以','分割,默认: kafka:9092 (default \"kafka:9092\") -M string 设置启动模式,analyze:攻击分析Agent,alters:告警监测Agent，默认:analyze (default \"analyze\") -O string 设置openApi的地址，用于获取规则、上报信息,默认: open.aidolphins.com (default \"open.aidolphins.com\") -T string 日志归一的kafka的Topic名称,默认: weblogs (default \"weblogs\") . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E5%B7%A5%E5%85%B7%E7%AB%AF#%E5%B7%A5%E5%85%B7%E7%AB%AF%E5%8F%82%E6%95%B0%E8%A7%A3%E9%87%8A",
+    "relUrl": "/部署管理/容器部署/工具端#工具端参数解释"
+  },"11": {
+    "doc": "工具端",
+    "title": "工具端",
+    "content": " ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E5%B7%A5%E5%85%B7%E7%AB%AF",
+    "relUrl": "/部署管理/容器部署/工具端"
+  },"12": {
+    "doc": "部署管理",
+    "title": "部署",
+    "content": "部署场景分两块，一块是容器环境下的部署，一块是非容器环境下的部署，而容器环境分K8S环境还有就是Docker-compose环境两种，具体细节可以看看分章节有介绍。 目前K8S的配置还没写出来，后续整体加上。优先使用docker-compose的方式部署，简单直接。 . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86#%E9%83%A8%E7%BD%B2",
+    "relUrl": "/部署管理#部署"
+  },"13": {
+    "doc": "部署管理",
+    "title": "部署管理",
+    "content": " ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86",
+    "relUrl": "/部署管理"
+  },"14": {
     "doc": "日志审计",
     "title": "背景描述",
     "content": "W3A SOC早期的日志审计是基于Perl写的脚本实现tail -f 类似的功能来实现日志的采集和上报，完整的依赖perl脚本的能力，这个得感谢@McShell当时跟他一起合作协同做的一个版本，后来我们奔现了，他成了我的同事（在三七互娱时）也是我一直以来特别要好的兄弟，后来现在去了腾讯。 . 早期的版本相对来讲更多偏DEMO，不具备生产价值，但是却好多人用，普遍的场景是： . | 大学生毕业，需要毕业设计，这个时候日志审计就是最热的毕设选科，所以用的人特别多。 | 有些小公司的业务，需要有日志审计的能力，毕竟要过等保，然后想不花钱能解决问题，这个时候用它正合适。 | 长期有日志审计需要，ELK只能记录日志展示，做些正向分析、承载，而攻击行为，识别有困难，所以就用这个识别攻击行为，好知道哪被攻击。 | 早期有些定制化的客户，如机顶盒、广场小型机、广告公司，这些小型客户，他们量不大，都是开源的官网如DeDeCMS、WP类的应用做二开，怕被人攻击不知道，用来发现和审计攻击行为，好做些升级和优化。 | . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1#%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BF%B0",
     "relUrl": "/日志审计#背景描述"
-  },"3": {
+  },"15": {
     "doc": "日志审计",
     "title": "规则管理",
     "content": "进来之后，点击「左侧」日志监控 =&gt; 规则管理，即可看到默认的规则，默认的规则一共写了11条，能够具备初步的能力： . | 弱口令登录登录的检测识别。 | SQL注入 | XSS跨站脚本攻击 | LFI/RFI文件包含 | 命令执行 | 后门webshell | 部分扫描特征 | . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1#%E8%A7%84%E5%88%99%E7%AE%A1%E7%90%86",
     "relUrl": "/日志审计#规则管理"
-  },"4": {
+  },"16": {
     "doc": "日志审计",
     "title": "DEMO",
     "content": "写的规则都是泛匹配规则，如需深入，请自行编写合适的规则策略（基于Golang的regexp进行开发），元豚科技也可以辅助定制化开发规则，也可以购买商业的规则库，按需使用即可。 . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1#demo",
     "relUrl": "/日志审计#demo"
-  },"5": {
+  },"17": {
     "doc": "日志审计",
     "title": "日志审计",
     "content": " ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1",
     "relUrl": "/日志审计"
-  },"6": {
+  },"18": {
     "doc": "W3A SOC",
-    "title": "关键能力细节",
+    "title": "关键输出",
     "content": "Web日志分析 . | 通过Logstash/filebeat采集日志到ES上。 | Golang通过开放平台，获取规则信息针对Kafka的日志进行实时分析。 | 将存在问题的部分直接存到平台里，平台只存落地的攻击日志、记录分析日志数。 | 攻击源IP地址分析，结合IP来源进行分析。 | 输出可以用于封禁的API接口，查可封禁的IP。 | . 存活监控/篡改监控告警 . | 针对提交的IP进行检测，看是否存活，可以分布式，持续的监测。 | 针对目标进行篡改监控。 | . 问题告警 . | 针对出现的问题，统一告警输出。 | 支持钉钉、企业微信。 | . ",
-    "url": "http://localhost:4000/#%E5%85%B3%E9%94%AE%E8%83%BD%E5%8A%9B%E7%BB%86%E8%8A%82",
-    "relUrl": "/#关键能力细节"
-  },"7": {
+    "url": "http://localhost:4000/#%E5%85%B3%E9%94%AE%E8%BE%93%E5%87%BA",
+    "relUrl": "/#关键输出"
+  },"19": {
     "doc": "W3A SOC",
     "title": "Docker Compose（快速体验）",
     "content": "git clone https://github.com/smarttang/w3a_SOC cd w3a_SOC/deploy/docker-compose/test-environment/ docker-compose up -d . ",
     "url": "http://localhost:4000/#docker-compose%E5%BF%AB%E9%80%9F%E4%BD%93%E9%AA%8C",
     "relUrl": "/#docker-compose快速体验"
-  },"8": {
+  },"20": {
+    "doc": "W3A SOC",
+    "title": "漏洞管理图片上传",
+    "content": "如果需要用图片上传功能，在腾讯云开一个COS，然后再docker-compose上改改对应的配置即可。 . ",
+    "url": "http://localhost:4000/#%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0",
+    "relUrl": "/#漏洞管理图片上传"
+  },"21": {
     "doc": "W3A SOC",
     "title": "服务启动后的效果",
     "content": "➜ test-environment git:(master) ✗ docker-compose ps -a Name Command State Ports -------------------------------------------------------------------------------------------------------------------------------- test-environment_elasticsearch_1 /bin/tini -- /usr/local/bi ... Up 0.0.0.0:9200-&gt;9200/tcp, 0.0.0.0:9300-&gt;9300/tcp test-environment_filebeat1_1 filebeat -e -strict.perms= ... Up test-environment_filebeat2_1 filebeat -e -strict.perms= ... Up test-environment_kafka_1 /opt/bitnami/scripts/kafka ... Up 0.0.0.0:29092-&gt;29092/tcp, 0.0.0.0:9092-&gt;9092/tcp test-environment_kibana_1 /bin/tini -- /usr/local/bi ... Up 0.0.0.0:5601-&gt;5601/tcp test-environment_nginx_1 /usr/local/openresty/bin/o ... Up 0.0.0.0:80-&gt;8080/tcp test-environment_w3aAgent_1 /usr/local/sbin/dolphins Up test-environment_w3aAlterAgent_1 /usr/local/sbin/dolphins Up test-environment_w3aDashboard_1 sh -c java $JAVA_OPTS -Dja ... Up 0.0.0.0:8081-&gt;8080/tcp test-environment_w3aFrotend_1 /docker-entrypoint.sh ngin ... Up 0.0.0.0:81-&gt;80/tcp test-environment_w3aMysql_1 docker-entrypoint.sh mysqld Up 0.0.0.0:3306-&gt;3306/tcp, 33060/tcp test-environment_w3aRedis_1 docker-entrypoint.sh redis ... Up 0.0.0.0:6379-&gt;6379/tcp test-environment_w3aopenapi_1 sh -c java $JAVA_OPTS -Dja ... Up 0.0.0.0:8082-&gt;8080/tcp test-environment_zookeeper_1 /opt/bitnami/scripts/zooke ... Up 0.0.0.0:2181-&gt;2181/tcp, 2888/tcp, 3888/tcp, 8080/tcp . ",
     "url": "http://localhost:4000/#%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E5%90%8E%E7%9A%84%E6%95%88%E6%9E%9C",
     "relUrl": "/#服务启动后的效果"
-  },"9": {
+  },"22": {
     "doc": "W3A SOC",
     "title": "访问Web部分",
-    "content": "Docker Compose 启动后，访问：http://localhost:81/，就可以看到W3A SOC平台的服务了。 . | 攻击测试针对本地80进行攻击就行，那个就是靶场，扫描的时候自动激活分析。 | 所有的上报会在W3A SOC平台直观展现。 | 默认自带了少量规则，可以激活攻击用。 | . 攻击后就能看到如下图： . ",
+    "content": "Docker Compose 启动后，访问：http://localhost:81/，就可以看到W3A SOC平台的服务了，登录账号/密码：admin/w3admin . | 记得先「创建应用」，基于docker-compose部署的话，ES地址填「elasticsearch」,端口9200，站点地址写：127.0.0.1，站点日志索引: web*，进去就能看到样例DEMO了。 | 攻击测试针对本地80进行攻击就行，那个就是靶场，扫描的时候自动激活分析。 | 所有的上报会在W3A SOC平台直观展现。 | 默认自带了少量规则，可以激活攻击用。 | . 攻击后就能看到如下图： . ",
     "url": "http://localhost:4000/#%E8%AE%BF%E9%97%AEweb%E9%83%A8%E5%88%86",
     "relUrl": "/#访问web部分"
-  },"10": {
+  },"23": {
     "doc": "W3A SOC",
     "title": "备注",
     "content": ". | 一直以来都有人问我到底还是否继续更新迭代，不断有人加我，还给我鼓励，时隔六年，沉淀积累之后，准备再做一套新的，可以持续更新维护的版本。 | 诸位发现问题请直接提交issue，如果有定制化需求，麻烦支持下收费版本，在内部推动下元豚科技的产品啥的，感激不尽。 | 项目元豚科技接管之后，起码不会荒废，只要公司一直在，项目就会更新。 | 旧的版本在release，那个版本是开源的，代码开放，有需要自行提取。 | . ",
     "url": "http://localhost:4000/#%E5%A4%87%E6%B3%A8",
     "relUrl": "/#备注"
-  },"11": {
+  },"24": {
     "doc": "W3A SOC",
     "title": "客户体验计划",
     "content": ". | 欢迎种子用户，早期的种子用户后期可以优先体验商业版功能，欢迎扫码加我微信，我后面拉群。 | 欢迎提意见和场景，我们想办法满足，如果有好的日志样本也可以提供给我们。 | . ",
     "url": "http://localhost:4000/#%E5%AE%A2%E6%88%B7%E4%BD%93%E9%AA%8C%E8%AE%A1%E5%88%92",
     "relUrl": "/#客户体验计划"
-  },"12": {
+  },"25": {
     "doc": "W3A SOC",
     "title": "加我",
     "content": ". ",
     "url": "http://localhost:4000/#%E5%8A%A0%E6%88%91",
     "relUrl": "/#加我"
-  },"13": {
+  },"26": {
     "doc": "W3A SOC",
     "title": "W3A SOC",
-    "content": ". 基于日志安全分析做切入，做最好用的安全运维工作台。 . 主要特性 . | 日志分析: 基于kafka+GoLang的方式，对采集的Web和系统应用日志进行攻击行为的分析。 | 篡改监控: 基于Golang开发的页面篡改监控。 | 业务连续性监控: 基于网络的业务连续性监控服务，确定业务是否有中断。 | 告警整合: 实现钉钉、企业微信的联动告警机制。 | 部署支持：docker-compose、Kubernetes。 | 整体架构：基于 Filebeat(采集/清洗) + Kafka(汇聚) + ElasticSearch(检索) | 技术实现：后端基于Java，前端基于Vue，数据库基于MYSQL。 | . 目标 . | 满足等保二级、三级的需求，直接部署就能用那种。 | 让客户少花钱，然后也能用，不串联到业务中，对业务0影响。 | 部署简单，一键部署，或者直接随着元豚科技生态自动部署。 | . ",
+    "content": ". 基于日志安全分析做切入，做最好用的「安全运维工作台」。 . 主要特性 . | 日志分析: 基于kafka+GoLang的方式，对采集的Web和系统应用日志进行攻击行为的分析。 | 业务连续性监控: 基于网络的业务连续性监控服务，确定业务是否有中断。 | 告警整合: 实现钉钉、企业微信的联动告警机制。 | 部署支持：docker-compose、Kubernetes。 | 整体架构：基于 Filebeat(采集/清洗) + Kafka(汇聚) + ElasticSearch(检索) | 技术实现：后端基于Java，前端基于Vue，数据库基于MYSQL。 | . 目标 . | 满足等保二级、三级的需求，直接部署就能用那种。 | 让客户少花钱，然后也能用，不串联到业务中，对业务0影响。 | 部署简单，一键部署，或者直接随着元豚科技生态自动部署。 | . 用户画像 . | 安全、运维负责人，全方位了解当前安全现状，做摸底排查 | 安全开发、运维开发，集成全方面的安全、运维自动化平台，提效 | 安全运营，了解、运营整体安全策略、规则、插件 | CTO，清晰的知道安全态势、运维态势 | . ",
     "url": "http://localhost:4000/",
     "relUrl": "/"
-  },"14": {
+  },"27": {
+    "doc": "部署W3A服务端",
+    "title": "服务端组成",
+    "content": "服务端这块有两个部分，两个Java的Jar包组成，主要承担平台的业务还有就是跟工具、第三方交互： . | 开放平台OpenAPI，用于跟工具交互、外部第三方交互。 | 平台端Dashboard，用于跟前端用户侧交互，我们严格按照前后端分离来搞，尽量不整合到一起，因为那样不好维护，也不优雅。 | . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E6%9C%8D%E5%8A%A1%E7%AB%AF#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%BB%84%E6%88%90",
+    "relUrl": "/部署管理/非容器部署/部署W3A服务端#服务端组成"
+  },"28": {
+    "doc": "部署W3A服务端",
+    "title": "部署（平台侧）",
+    "content": "Java端的部署和启动特别简单，如果不是容器，则直接基于Java的入参就行，平台端跟OpenApi端不太一样，平台端具体如下： . java -Dspring.datasource.url=\"jdbc:mysql://localhost:3306/w3a_soc?characterEncoding=utf-8&amp;useSSL=false\" \\ -Dspring.datasource.username=root \\ -Dspring.datasource.password=testw3a \\ -Dspring.redis.host=127.0.0.1 \\ -Dspring.redis.port=6379 \\ -Dspring.redis.database=4 \\ -Dspring.cos.accesskey=[cos的AccessKey] \\ -Dspring.cos.secretkey=[cos的secretKey] \\ -Dspring.cos.regionname=[归属地] \\ -Dspring.cos.bucketname=[bucket] \\ -Dspring.cos.baseurl=[具体地址] \\ -Dserver.port=[端口号] \\ -jar w3a-dashboard-service-*.jar . 解释下这个参数: . - Dspring.cos.* 都是腾讯云的配置 - Dspring.datasource.* 都是数据库的配置 - Dspring.redis.* 都是缓存的配置 - Dserver.port 基础的配置 . 具体参数解释：这里一定要注意，baseurl一定要完整的地址，因为要展示图片用! . - Dspring.datasource.url 数据库地址 - Dspring.datasource.username 数据库账号 - Dspring.datasource.password 数据库密码 - Dspring.redis.host redis地址 - Dspring.redis.port redis端口 - Dspring.redis.database redis用的库 - Dspring.cos.accesskey AccessKey - Dspring.cos.secretkey SecretKey - Dspring.cos.regionname 归属地，比如：ap-beijing - Dspring.cos.bucketname bucket,比如：test-19281913 - Dspring.cos.baseurl cos的地址，比如：https://test-19281913.cos.ap-beijing.myqcloud.com - Dserver.port 服务的对外暴露的端口 . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E6%9C%8D%E5%8A%A1%E7%AB%AF#%E9%83%A8%E7%BD%B2%E5%B9%B3%E5%8F%B0%E4%BE%A7",
+    "relUrl": "/部署管理/非容器部署/部署W3A服务端#部署平台侧"
+  },"29": {
+    "doc": "部署W3A服务端",
+    "title": "部署（OpenAPI侧）",
+    "content": "OpenAPI部署并不复杂，跟上面的一样，但是有点不同的地方是，这里不用配置COS，因为接口API按理来讲不投递图片，更多是投递图片链接，外链，启动方式如下： . java -Dspring.datasource.url=\"jdbc:mysql://localhost:3306/w3a_soc?characterEncoding=utf-8&amp;useSSL=false\" \\ -Dspring.datasource.username=root \\ -Dspring.datasource.password=testw3a \\ -Dspring.redis.host=127.0.0.1 \\ -Dspring.redis.port=6379 \\ -Dspring.redis.database=4 \\ -Dserver.port=[端口号] \\ -jar w3a-openapi-service-*.jar . 参数就跟上面解释一样，我就不重复了，启动成功的效果如下： . ____ _ __ _ _ /\\\\ / ___'_ __ _ _(_)_ __ __ _ \\ \\ \\ \\ ( ( )\\___ | '_ | '_| '_ \\/ _` | \\ \\ \\ \\ \\\\/ ___)|_)| | || (_| ) ) ) ) ' |____| .__|_|_|_|_\\__, | / / / / =========|_|==============|___/=/_/_/_/ :: Spring Boot :: (v2.5.6-SNAPSHOT) 2022-05-18 15:49:19.568 INFO 50370 --- [ main] c.w.d.s.W3aDashboardServiceApplication : Starting W3aDashboardServiceApplication v0.0.1-SNAPSHOT using Java 15.0.5 on smarttangdeMacBook-Pro-2.local with PID 50370 (/dashboard/w3a-dashboard-service-v1.0.8.jar started by smarttang in /dashboard) 2022-05-18 15:49:19.569 INFO 50370 --- [ main] c.w.d.s.W3aDashboardServiceApplication : No active profile set, falling back to default profiles: default 2022-05-18 15:49:20.069 INFO 50370 --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode! 2022-05-18 15:49:20.071 INFO 50370 --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode. 2022-05-18 15:49:20.088 INFO 50370 --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces. 2022-05-18 15:49:20.550 INFO 50370 --- [ main] o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port(s): 9999 (http) 2022-05-18 15:49:20.559 INFO 50370 --- [ main] o.apache.catalina.core.StandardService : Starting service [Tomcat] 2022-05-18 15:49:20.559 INFO 50370 --- [ main] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/9.0.54] 2022-05-18 15:49:20.610 INFO 50370 --- [ main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext 2022-05-18 15:49:20.611 INFO 50370 --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1000 ms _ _ |_ _ _|_. ___ _ | _ | |\\/|_)(_| |_\\ |_)||_|_\\ / | 3.4.3 2022-05-18 15:49:22.060 INFO 50370 --- [ main] o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 9999 (http) with context path '' 2022-05-18 15:49:22.068 INFO 50370 --- [ main] c.w.d.s.W3aDashboardServiceApplication : Started W3aDashboardServiceApplication in 3.072 seconds (JVM running for 3.459) . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E6%9C%8D%E5%8A%A1%E7%AB%AF#%E9%83%A8%E7%BD%B2openapi%E4%BE%A7",
+    "relUrl": "/部署管理/非容器部署/部署W3A服务端#部署openapi侧"
+  },"30": {
+    "doc": "部署W3A服务端",
+    "title": "部署W3A服务端",
+    "content": " ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E6%9C%8D%E5%8A%A1%E7%AB%AF",
+    "relUrl": "/部署管理/非容器部署/部署W3A服务端"
+  },"31": {
+    "doc": "部署W3A工具端",
+    "title": "工具端组成",
+    "content": "工具端这块，主要就1个端负责所有的事，但是这个端基于参数化区分启动，整体基于Golang开发，一方面是安全性更好，其次就是它小巧灵动，还有就是更加贴近云原生，后续可能会整体都往Golang上走，因为Golang确实很舒服，这个端目前实现如下： . | 跟OpenAPI整体联动，处理各种交互。 | 实现日志的分析、攻击的识别上报。 | 实现告警的Alter，还有通知。 | 默认启动失败5次重试，关键的部分都有重试机制。 | …(未来无限的可能) | . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E5%B7%A5%E5%85%B7%E7%AB%AF#%E5%B7%A5%E5%85%B7%E7%AB%AF%E7%BB%84%E6%88%90",
+    "relUrl": "/部署管理/非容器部署/部署W3A工具端#工具端组成"
+  },"32": {
+    "doc": "部署W3A工具端",
+    "title": "命令行",
+    "content": "直接 -h 一下就有介绍，比较简单粗暴。 . ➜ bin ./w3a-soc-agent -h Usage of ./w3a-soc-agent: -A string 日志归一的kafka的地址:端口,可以多个,以','分割,默认: kafka:9092 (default \"kafka:9092\") -M string 设置启动模式,analyze:攻击分析Agent,alters:告警监测Agent，默认:analyze (default \"analyze\") -O string 设置openApi的地址，用于获取规则、上报信息,默认: open.aidolphins.com (default \"open.aidolphins.com\") -T string 日志归一的kafka的Topic名称,默认: weblogs (default \"weblogs\") . 启动Web日志审计的具体命令如下: ./w3a-soc-agent -M analyze -O openapi.my.com -T weblogs -A kafka.my.com:9092 . 具体参数解释： . -O openapi.my.com 替换成自己的部署的W3A服务端开放平台对应的域名，或者IP。 -T weblogs 替换成自己的kafka的topic名称 -A kafka.my.com:9092 替换成自己的Kafka地址和端口 -M analyze 具体启动的模块(日志分析模块) . 启动规则告警的具体命令如下： ./w3a-soc-agent -M alters -O openapi.my.com . 具体参数解释： . -O openapi.my.com 替换成自己的部署的W3A服务端开放平台对应的域名，或者IP。 -M alters 具体启动的模块(告警模块) . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E5%B7%A5%E5%85%B7%E7%AB%AF#%E5%91%BD%E4%BB%A4%E8%A1%8C",
+    "relUrl": "/部署管理/非容器部署/部署W3A工具端#命令行"
+  },"33": {
+    "doc": "部署W3A工具端",
+    "title": "异常情况",
+    "content": ". | 如果出现以下异常情况，不用慌张，就是你的Kafka没配置正确，访问不了。 | . 2022/05/18 16:10:14 kafka: client has run out of available brokers to talk to (Is your cluster reachable?) 2022/05/18 16:10:18 kafka: client has run out of available brokers to talk to (Is your cluster reachable?) . | 如果出现中文错误，一定是接口数据没导入进去，或者链接不上API，这个得看看MYSQL是否导入或者地址有没有错。 | . ➜ bin ./w3a-soc-agent -M alters -O openapi.my.com 2022/05/18 16:17:45 启动告警端成功,standby中... 2022/05/18 16:18:01 获取告警规则ID列表失败,请稍后再试! 2022/05/18 16:19:00 获取告警规则ID列表失败,请稍后再试! 2022/05/18 16:20:00 获取告警规则ID列表失败,请稍后再试! . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E5%B7%A5%E5%85%B7%E7%AB%AF#%E5%BC%82%E5%B8%B8%E6%83%85%E5%86%B5",
+    "relUrl": "/部署管理/非容器部署/部署W3A工具端#异常情况"
+  },"34": {
+    "doc": "部署W3A工具端",
+    "title": "部署W3A工具端",
+    "content": " ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E5%B7%A5%E5%85%B7%E7%AB%AF",
+    "relUrl": "/部署管理/非容器部署/部署W3A工具端"
+  },"35": {
     "doc": "漏洞风险管理",
     "title": "介绍&amp;洞察",
     "content": "漏洞风险的管理基本上每个公司都会涉及到，过去一直都是每个公司开发自己的独立的功能，但是殊俗同归，基本都是漏洞的整个生命周期管理。站在工作台的角度，我们面对的画像是安全、运维侧的同学，所以我们更多面对这类人群去做深入，让他们用的更加舒服为主，而实际推进落地修复，更多依赖第三方集成来实现，这里有些洞察： . | 业务侧本身就有很多平台，如worktle、Jira、禅道、Wiki等，实际上大家都在做减法，我们再做个加法就有点难受了。 | 整个闭环周期其实在第三方平台已经能够快速满足提醒、跟进的能力，无需太多的操作即可实现，但第三方的集成要做更多的事，从评估、对接、再到研究、开发，就是时间周期，折腾下来还不一定能够通用，因为每个公司内部都不一样，涉及到如权限、身份、角色等，就更加麻烦了，所以一般都特别不好整。 | 涉及到多样的性的漏洞特征、多样性的数据源，内部系统直接对外拉通也很不安全，对内部会带来困扰，最常见就是漏洞直接第三方托管之后，被弱口令暴露出来。 | . 元豚科技在漏洞管理这块有几个特点： . | 针对第三方数据源，我们开放OpenAPI，客户可以托管到云上，独立分离部署，第三方可以根据OpenAPI标签化的录入漏洞风险，直达W3A SOC的工作台里，再由安全人员进行管理处置。 | 内部拉通的动作，OpenAPI可以直接输出，可以找元豚科技帮您对接内部的服务，如Jira、禅道等第三方，也可以自己集成，数据源统一之后，自己就能玩，定制完一次之后，后续没有任何成本，直接就能同步到内部环境和平台，简单直接。 | 针对扫描器，或者定制的扫描服务，只要发现的问题，根据需要直接通过OpenAPI录入，可以自行完善闭环，快速方便，如已经打通了上游，这个就更加简单了。 | . ",
     "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86#%E4%BB%8B%E7%BB%8D%E6%B4%9E%E5%AF%9F",
     "relUrl": "/漏洞风险管理#介绍洞察"
-  },"15": {
+  },"36": {
     "doc": "漏洞风险管理",
     "title": "使用方式",
     "content": "点击「漏洞管理」即可看到漏洞管理的功能，可以新建、处理漏洞的信息。 . ",
     "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F",
     "relUrl": "/漏洞风险管理#使用方式"
-  },"16": {
+  },"37": {
+    "doc": "漏洞风险管理",
+    "title": "针对图片上传",
+    "content": "图片上传这块，我们集成的是腾讯云的COS，直接上传到COS上，后续加入阿里云可选，目前先用COS。 . ",
+    "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86#%E9%92%88%E5%AF%B9%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0",
+    "relUrl": "/漏洞风险管理#针对图片上传"
+  },"38": {
     "doc": "漏洞风险管理",
     "title": "漏洞风险管理",
     "content": " ",
     "url": "http://localhost:4000/%E6%BC%8F%E6%B4%9E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86",
     "relUrl": "/漏洞风险管理"
-  },"17": {
+  },"39": {
     "doc": "配置Kafka采集器",
     "title": "配置&amp;解释",
     "content": "日志进入Kafka之后，多个端进行消费，本身W3A SOC 的Agent端就会进行读取分析，同时也需要将这个日志放到ES上(主要用于日志查询，在平台里有个Web日志查询的功能，直接联动ES的，实现简单的查询服务，后续会做一些特殊的查询功能放到平台里，具体有需要可以提需求定制也行)，这个时候就可以配置一个Filebeat端进行日志的推送，从Kafka消费到ES里。在docker-compose里我有写好的配置文件可作参考，具体解释下： . | hosts: [“elasticsearch:9200”] 中 「elasticsearch」是实际的es的地址，这里用的是docker-compose的服务名，如果你有自己的ES，可以直接写自己的ES的IP地址或域名，直接替换就行，但是记得一定要能通啊，不然发不过去。 | hosts: [“kafka:9092”] 中「kafka」是实际的Kafka数据源地址，如果有自己的Kafka并且已经配置好配置Nginx采集器的话，直接就用那个kafka地址就行，我这里写的是docker-compose的服务名称。 | . filebeat.inputs: - type: kafka enabled: true hosts: [\"kafka:9092\"] topics: [\"weblogs\"] group_id: \"weblogs\" json.keys_under_root: true json.add_error_key: true json.overwrite_keys: true output.elasticsearch: hosts: [\"elasticsearch:9200\"] index: \"weblog-%{+yyyy.MM.dd}\" setup.template.name: \"filebeattest\" setup.template.pattern: \"filebeattest-*\" processors: # kafka的消息会在message字段，通过该processor将json解析出来 - decode_json_fields: fields: [\"message\"] process_array: true max_depth: 1 target: \"\" overwrite_keys: true add_error_key: true # 下边这两个处理器根据自身需求设置 # 将json中start_time字段的时间放到@timestamp中 - timestamp: # 格式化时间值 给 时间戳 field: start_time # 使用我国东八区时间 格式化log时间 timezone: Asia/Shanghai layouts: # - '2006-01-02 15:04:05' - '2006-01-02 15:04:05.999' test: - '2019-06-22 16:33:51.111' . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AEKafka%E9%87%87%E9%9B%86%E5%99%A8#%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A",
     "relUrl": "/日志审计/配置Kafka采集器#配置解释"
-  },"18": {
+  },"40": {
     "doc": "配置Kafka采集器",
     "title": "配置Kafka采集器",
     "content": " ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AEKafka%E9%87%87%E9%9B%86%E5%99%A8",
     "relUrl": "/日志审计/配置Kafka采集器"
-  },"19": {
+  },"41": {
     "doc": "配置Nginx采集器",
     "title": "演进&amp;洞察",
     "content": "现在经过几年的技术演进，我们不再自己造轮子自己写这个采集端，因为相对来讲不太稳健： . | 容易崩，一旦崩了会带来各种问题，还得维护、排错，也不知道哪个地方出问题，说不定是语法，或者各种奇奇怪怪的场景。 | 中间层不太稳健，量大的就出各种问题，取决于机器性能和日志处理的瓶颈。 | . 最好的方式还是基于现成的采集来实现，选型中有Flume、Logstash，也有Filebeat这些，看了下对比：参考指南最终，因为分析工具是基于Golang的，而且我们整个工作台也是奔着云原生的方向去走，所以，我们在采集这端优先用Filebeat，主要洞察是： . | 针对中小型的客户，比较好融合，基于Kafka实现，订阅消费的模式比较容易解耦。（正正合适，对业务0嵌入） | 针对中大型的客户，如日志量到PB级一天，这种基于Hadoop集群的模式，可以单独再聊，不在本文范畴里。（从画像来讲，这类客户极其罕见，真有，我们可以定制） | Kafka相对稳健成熟的基础设施，不需要过多对比，什么性能指标、各种推理，客户不用有过多的顾虑，怕用一个不成熟的第三方，导致各种问题，怕自研的采集器要么不维护，要么不稳定，中立挺好，kafka大家都熟，没有顾虑。 | 兼容容器集群（K8S）的场景，在容器中基于Filebeat采集有天然优势，这个在后续融合HIDS(平台后续具备的能力)的时候，就更加简单容易，天然结合。 | . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#%E6%BC%94%E8%BF%9B%E6%B4%9E%E5%AF%9F",
     "relUrl": "/日志审计/配置Nginx采集器#演进洞察"
-  },"20": {
+  },"42": {
     "doc": "配置Nginx采集器",
     "title": "配置&amp;解释",
     "content": "从docker-compose的配置文件上，就能看到这个采集的用法。 . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A",
     "relUrl": "/日志审计/配置Nginx采集器#配置解释"
-  },"21": {
+  },"43": {
     "doc": "配置Nginx采集器",
     "title": "filebeat基础配置",
     "content": "filebeat.inputs: - type: log enabled: true fields: source: nginx_access_log paths: - /var/log/nginx/access*.log json.keys_under_root: true json.overwrite_keys: true output.kafka: hosts: [\"kafka:9092\"] topic: weblogs required_acks: 1 . 这端主要做的是： . | 把Nginx日志采集到Kafka中，进行存储，用于Golang写的分析工具对日志数据进行分析。 | 要把Nginx的日志基于Json方式格式化好放进去，好让工具解析。 | hosts: [“kafka:9092”] 这个地方的「kafka」可以替换成kafka的域名、或者ID，如果有自建的就写自建的就行了，我这里写的是docker-compose里的服务名 | topic: weblogs 这个「weblogs」可以替换成你想要的日志名称，我建议就用这个，因为默认就是分析Web日志。 | . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#filebeat%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE",
     "relUrl": "/日志审计/配置Nginx采集器#filebeat基础配置"
-  },"22": {
+  },"44": {
     "doc": "配置Nginx采集器",
     "title": "Nginx基础配置",
     "content": "在nginx这一端，也要做些轻微改动，如果本身就是JSON格式，对一下配置就可以，主要看 log_format 的 log_json这个部分，因为里面的字段都是对应的，如果已经有了Nginx的配置，就加一个这个就行。 . 这里我们自己用的是openresty，用原生的Nginx也可以的，不限制具体用哪个。 . worker_processes auto; #error_log \"/opt/bitnami/nginx/logs/error.log\"; pid \"/tmp/nginx.pid\"; events { worker_connections 1024; } http { include mime.types; default_type application/octet-stream; log_format main '$remote_addr - $remote_user [$time_local]' '\"$request\" $status $body_bytes_sent \"$http_referer\" ' '\"$http_user_agent\" \"$http_x_forwarded_for\" \"$http_host\" \"$request_time\" \"$upstream_response_time\" \"$request_body\"'; #access_log \"/opt/bitnami/nginx/logs/access.log\" main; log_format log_json '{\"@timestamp\": \"$time_local\",\"request_body\":\"$request_body\",\"remote_addr\":\"$remote_addr\",\"http_host\":\"$http_host\",\"request\":\"$request\",\"status\":\"$status\",\"body_bytes_sents\":\"$body_bytes_sent\",\"req_time\":\"$request_time\",\"http_user_agent\":\"$http_user_agent\", \"http_referer\":\"$http_referer\", \"request_method\":\"$request_method\", \"http_x_forwarded_for\":\"$http_x_forwarded_for\"}'; #access_log \"/usr/local/openresty/nginx/logs/access.log\" log_json; add_header X-Frame-Options SAMEORIGIN; client_body_temp_path \"/tmp/client_body\" 1 2; proxy_temp_path \"/tmp/proxy\" 1 2; fastcgi_temp_path \"/tmp/fastcgi\" 1 2; scgi_temp_path \"/tmp/scgi\" 1 2; uwsgi_temp_path \"/tmp/uwsgi\" 1 2; client_body_buffer_size 1024k; fastcgi_buffers 32 16k; sendfile on; gzip on; gzip_http_version 1.0; gzip_comp_level 2; gzip_proxied any; gzip_types text/plain text/css application/javascript text/xml application/xml+rss; keepalive_timeout 65; client_max_body_size 80M; server_tokens off; #include \"/opt/bitnami/nginx/conf/server_blocks/*.conf\"; # HTTP Server server { lua_need_request_body on; access_log \"/usr/local/openresty/nginx/logs/access.log\" log_json; listen 8080; server_name api.example.com; location / { proxy_pass \"http://www.aidolphins.com\"; proxy_set_header X-Forwarded-Proto $scheme; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; root html; index index.html index.htm; } } } . ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8#nginx%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE",
     "relUrl": "/日志审计/配置Nginx采集器#nginx基础配置"
-  },"23": {
+  },"45": {
     "doc": "配置Nginx采集器",
     "title": "配置Nginx采集器",
     "content": " ",
     "url": "http://localhost:4000/%E6%97%A5%E5%BF%97%E5%AE%A1%E8%AE%A1/%E9%85%8D%E7%BD%AENginx%E9%87%87%E9%9B%86%E5%99%A8",
     "relUrl": "/日志审计/配置Nginx采集器"
+  },"46": {
+    "doc": "部署W3A界面端",
+    "title": "界面端组成",
+    "content": "界面端就一个dist，基于Vue生成的，后续可能改成React，目前主要以Vue为主，因为成本最低原则。 部署界面这端需要Nginx配置文件、静态文件，即可。 . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E7%95%8C%E9%9D%A2%E7%AB%AF#%E7%95%8C%E9%9D%A2%E7%AB%AF%E7%BB%84%E6%88%90",
+    "relUrl": "/部署管理/非容器部署/部署W3A界面端#界面端组成"
+  },"47": {
+    "doc": "部署W3A界面端",
+    "title": "部署",
+    "content": "在开源仓库里有个frontend下有个nginx.conf的文件，写的比较清晰了，这里贴下并解释下： . server { listen 80; server_name _; # gzip config gzip on; gzip_min_length 1k; gzip_comp_level 6; gzip_types text/plain text/css text/javascript application/json application/javascript application/x-javascript application/xml; gzip_vary on; gzip_disable \"MSIE [1-6]\\.\"; root /usr/share/nginx/html; include /etc/nginx/mime.types; location / { try_files $uri $uri/ /index.html; } location /prod-api/ { proxy_pass http://w3aDashboard:8080/; } } . 这主要需要关注的就只有proxy_pass这个字段。 只要把这个字段里的内容替换成你的W3A服务端API地址即可，然后把Nginx配置文件放进去/etc/nginx/conf.d/里面就可以了。 . ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E7%95%8C%E9%9D%A2%E7%AB%AF#%E9%83%A8%E7%BD%B2",
+    "relUrl": "/部署管理/非容器部署/部署W3A界面端#部署"
+  },"48": {
+    "doc": "部署W3A界面端",
+    "title": "部署W3A界面端",
+    "content": " ",
+    "url": "http://localhost:4000/%E9%83%A8%E7%BD%B2%E7%AE%A1%E7%90%86/%E9%9D%9E%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2/%E9%83%A8%E7%BD%B2W3A%E7%95%8C%E9%9D%A2%E7%AB%AF",
+    "relUrl": "/部署管理/非容器部署/部署W3A界面端"
   }
 }
