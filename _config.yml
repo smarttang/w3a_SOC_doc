@@ -2,7 +2,7 @@
 remote_theme: pmarsceill/just-the-docs
 
 title: W3A SOC
-description: W3A SOC 一个安全运维工作台
+description: W3A SOC 一个云原生安全运维工作台
 
 heading_anchors: true
 
