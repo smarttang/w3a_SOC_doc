@@ -11,7 +11,7 @@ permalink: /
 
 
 <p align="center">
-基于日志安全分析做切入，做最好用的「安全运维工作台」。<br>
+基于日志安全分析做切入，做最好用的云原生「安全运维工作台」。<br>
 </p>
 
 ![](https://img.shields.io/badge/golang-1.17.2%20-green)
