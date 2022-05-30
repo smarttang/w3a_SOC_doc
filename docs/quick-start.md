@@ -127,4 +127,4 @@ Docker Compose 启动后，访问：[http://localhost:81/](http://localhost:81/)
 
 ### 加我
 
-<img style="width:200px" title="Run example" alt="Run example" src="/WechatIMG211.jpeg">
+<img style="width:200px" title="Run example" alt="Run example" src="/WechatIMG227.jpeg">
