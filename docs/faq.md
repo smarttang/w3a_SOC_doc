@@ -2,7 +2,7 @@
 layout: default
 title: FAQ
 nav_order: 80
-permalink: /W3A
+permalink: /FAQ
 ---
 
 ## 问题清单
