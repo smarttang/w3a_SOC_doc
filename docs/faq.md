@@ -31,6 +31,7 @@ ae468803f3ce   registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-agent:v1.0.12
 答案：
 1. 这种情况百分之99都是因为kafka的问题，因为kafka在这个地方就是一个测试环境的配置，生产用的话，建议自己再搭建。
 2. 排查Kafka的方式，直接docker-compose logs -f kafka，基本啥能看到以下情况：(基本上就是kafka没起来)
+
 ```
 ➜  docker-compose-m1 git:(dev) ✗ docker logs -f f71cc6fa6d07
 kafka 12:30:24.56 
@@ -47,7 +48,9 @@ kafka 12:30:31.62 INFO  ==> ** Kafka setup finished! **
 kafka 12:30:31.94 INFO  ==> ** Starting Kafka **
 
 ```
+
 3. Agent端大概率是这样的：（默认有重试机制，所以会出现这种提示）
+
 ```
 2022/05/30 12:30:25 kafka: client has run out of available brokers to talk to: dial tcp 172.27.0.12:9092: connect: connection refused
 2022/05/30 12:30:29 kafka: client has run out of available brokers to talk to: dial tcp 172.27.0.12:9092: connect: connection refused
@@ -58,7 +61,9 @@ kafka 12:30:31.94 INFO  ==> ** Starting Kafka **
 2022/05/30 13:14:42 kafka: client has run out of available brokers to talk to: dial tcp 172.27.0.12:9092: connect: connection refused
 2022/05/30 13:14:46 kafka: client has run out of available brokers to talk to: dial tcp 172.27.0.12:9092: connect: connection refused
 ```
+
 这个时候，解决办法如下：
+
 ```
 docker-compose stop kafka
 docker-compose rm kafka
@@ -69,6 +74,7 @@ docker-compose restart w3aAnalysisAgent
 Q2: 发现怎么都起不来，无法启动成功!
 答案：
 1. 先检查是不是空间不够了，如果是，请释放空间.(docker image prune / docker image prune -a)
+
 ```
 ➜  docker-compose-m1 git:(dev) ✗ docker image prune 
 WARNING! This will remove all dangling images.
@@ -79,9 +85,9 @@ deleted: sha256:fd8accb0efa54feae18f68c9dd7c1662b2017c2f45a303533675a2b40005ce88
 untagged: registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-agent@sha256:2f11ce91fdd15ef12633b6ae12089c2112265f2712dab30e5eb66b3388433364
 deleted: sha256:7085831945d786fbfaddc8d1393c0780566e8fdd1ec38f9193c5c6df8ccb212d
 ...太多了就不贴了
-
 ```
-3. 清理system的空间:(docker system prune)
+
+2. 清理system的空间:(docker system prune)
 
 
 
