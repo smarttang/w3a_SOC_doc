@@ -30,7 +30,7 @@ permalink: /
 - 资产采集: 打通阿里云、腾讯云SDK，采集云上资产（域名、云服务、容器等）进行快速收集、定时同步，摸清家底。
 - 漏洞管理：在线托管所有漏洞，可以用于打通内部工作流的汇聚。
 - 告警整合: 实现钉钉、企业微信的联动告警机制，统计攻击行为，联动。
-- 流量分析：NIDS(Suricate/Snort)多类型支持，采集汇聚到工作台。
+- 流量分析：NIDS(Suricate)入侵检测支持，采集汇聚到工作台。
 
 **特点/技术栈**
 - 部署支持：docker-compose、Kubernetes。
@@ -83,22 +83,27 @@ docker-compose up -d
 
 ```
 ➜  test-environment git:(master) ✗ docker-compose ps -a
-              Name                            Command               State                          Ports                        
---------------------------------------------------------------------------------------------------------------------------------
-test-environment_elasticsearch_1   /bin/tini -- /usr/local/bi ...   Up      0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp      
-test-environment_filebeat1_1       filebeat -e -strict.perms= ...   Up                                                          
-test-environment_filebeat2_1       filebeat -e -strict.perms= ...   Up                                                          
-test-environment_kafka_1           /opt/bitnami/scripts/kafka ...   Up      0.0.0.0:29092->29092/tcp, 0.0.0.0:9092->9092/tcp    
-test-environment_kibana_1          /bin/tini -- /usr/local/bi ...   Up      0.0.0.0:5601->5601/tcp                              
-test-environment_nginx_1           /usr/local/openresty/bin/o ...   Up      0.0.0.0:80->8080/tcp                                
-test-environment_w3aAgent_1        /usr/local/sbin/dolphins         Up                                                          
-test-environment_w3aAlterAgent_1   /usr/local/sbin/dolphins         Up                                                          
-test-environment_w3aDashboard_1    sh -c java $JAVA_OPTS -Dja ...   Up      0.0.0.0:8081->8080/tcp                              
-test-environment_w3aFrotend_1      /docker-entrypoint.sh ngin ...   Up      0.0.0.0:81->80/tcp                                  
-test-environment_w3aMysql_1        docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp, 33060/tcp                   
-test-environment_w3aRedis_1        docker-entrypoint.sh redis ...   Up      0.0.0.0:6379->6379/tcp                              
-test-environment_w3aopenapi_1      sh -c java $JAVA_OPTS -Dja ...   Up      0.0.0.0:8082->8080/tcp                              
-test-environment_zookeeper_1       /opt/bitnami/scripts/zooke ...   Up      0.0.0.0:2181->2181/tcp, 2888/tcp, 3888/tcp, 8080/tcp
+CONTAINER ID   IMAGE                                                                 COMMAND                  CREATED        STATUS        PORTS                                                  NAMES
+b26c879644d1   osixia/openldap:1.5.0                                                 "/container/tool/run"    30 hours ago   Up 30 hours   0.0.0.0:389->389/tcp, 636/tcp                          docker-compose-m1_ldaps_1
+ff6024a93dbe   3b68dfcdef04                                                          "/usr/local/sbin/dol…"   3 days ago     Up 3 days                                                            docker-compose-m1_w3aNidsAgent_1
+17091a9095ad   registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-workapi:v1.0.14   "sh -c 'java $JAVA_O…"   3 days ago     Up 3 days     0.0.0.0:8082->8080/tcp                                 docker-compose-m1_w3aworkapi_1
+9080a6a6d2ff   docker.elastic.co/beats/filebeat:8.1.3                                "filebeat -e -strict…"   3 days ago     Up 3 days                                                            docker-compose-m1_filebeat3_1
+e317a1cbff02   jasonish/suricata:6.0                                                 "/docker-entrypoint.…"   3 days ago     Up 3 days                                                            docker-compose-m1_suricate_1
+26a957ef719d   001fd9d31bc7                                                          "/docker-entrypoint.…"   4 days ago     Up 4 days     0.0.0.0:81->80/tcp                                     docker-compose-m1_w3aFrotend_1
+152501ec9434   docker.elastic.co/beats/filebeat:8.1.3                                "filebeat -e -strict…"   4 days ago     Up 4 days                                                            docker-compose-m1_filebeat2_1
+c7a9d6105fdd   registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-openapi:v1.0.12   "sh -c 'java $JAVA_O…"   4 days ago     Up 4 days     0.0.0.0:8083->8080/tcp                                 docker-compose-m1_w3aopenapi_1
+a0cde4eb54b6   28d62a4b9041                                                          "sh -c 'java $JAVA_O…"   4 days ago     Up 4 days     0.0.0.0:8081->8080/tcp                                 docker-compose-m1_w3aDashboard_1
+a2d0f92e3bb0   docker.elastic.co/beats/filebeat:8.1.3                                "filebeat -e -strict…"   4 days ago     Up 4 days                                                            docker-compose-m1_filebeat1_1
+e84598505645   bitnami/kafka:3.1                                                     "/opt/bitnami/script…"   4 days ago     Up 4 days     0.0.0.0:9092->9092/tcp, 0.0.0.0:29092->29092/tcp       docker-compose-m1_kafka_1
+6ed0400a20a6   docker.elastic.co/elasticsearch/elasticsearch:8.1.3-arm64             "/bin/tini -- /usr/l…"   4 days ago     Up 4 days     0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp         docker-compose-m1_elasticsearch_1
+bd6bd9049129   registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-agent:v1.0.12     "/usr/local/sbin/dol…"   4 days ago     Up 4 days                                                            docker-compose-m1_w3aAnalysisAgent_1
+9d4a90deb609   registry.cn-beijing.aliyuncs.com/aidolphins_com/redis:v1              "docker-entrypoint.s…"   4 days ago     Up 4 days     0.0.0.0:6379->6379/tcp                                 docker-compose-m1_w3aRedis_1
+860eaa722fc1   registry.cn-beijing.aliyuncs.com/aidolphins_com/mysql:v1              "docker-entrypoint.s…"   4 days ago     Up 4 days     0.0.0.0:3306->3306/tcp, 33060/tcp                      docker-compose-m1_w3aMysql_1
+e762f43da293   openresty/openresty:alpine                                            "/usr/local/openrest…"   4 days ago     Up 4 days     0.0.0.0:80->8080/tcp                                   docker-compose-m1_nginx_1
+c08c052fcf0d   bitnami/zookeeper:3.8                                                 "/opt/bitnami/script…"   4 days ago     Up 4 days     2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp, 8080/tcp   docker-compose-m1_zookeeper_1
+8203c32164e7   registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-agent:v1.0.12     "/usr/local/sbin/dol…"   4 days ago     Up 4 days                                                            docker-compose-m1_w3aCodeScanAgent_1
+b8b771689e30   registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-agent:v1.0.12     "/usr/local/sbin/dol…"   4 days ago     Up 4 days                                                            docker-compose-m1_w3aAssetsAgent_1
+0548ee11dab6   registry.cn-beijing.aliyuncs.com/aidolphins_com/w3a-agent:v1.0.12     "/usr/local/sbin/dol…"   4 days ago     Up 4 days                                                            docker-compose-m1_w3aAlterAgent_1
 ```
 
 ## 访问Web部分
